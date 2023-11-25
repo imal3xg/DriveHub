@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>ANUNCIO</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="contenido">
+    <ion-item *ngIf="anuncio">
+          <ion-img src="{{ anuncio.img }}" alt="Foto de anuncio"></ion-img>
+        <ion-card-content>
+          <!-- Mostrar detalles de la persona -->
+          <ion-label>
+            <h1>Marca: {{ anuncio.marca }}</h1>
+            <h1>Modelo: {{ anuncio.modelo }}</h1>
+            <h1>Año: {{ anuncio.year }}</h1>
+            <h1>Precio: {{ anuncio.precio }}</h1>
+          </ion-label>
+        </ion-card-content>
+    </ion-item>
+  </div>
+</ion-content>

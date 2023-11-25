@@ -1,0 +1,20 @@
+ion-img {
+    /* Establecer el tamaño de la imagen */
+    width: 150px; /* Ajusta el tamaño según tus necesidades */
+    height: 150px; /* Ajusta el tamaño según tus necesidades */
+    border-radius: 50%; /* Hacer la imagen redonda (opcional) */
+    object-fit: cover; /* Ajustar el tamaño de la imagen sin distorsionar */
+    margin: 0 auto; /* Centrar la imagen en el card */
+    display: block; /* Asegurarse de que ocupe el tamaño establecido */
+  }
+  
+  ion-card {
+    /* Ajustes adicionales para el card si es necesario */
+    margin: 20px;
+    padding: 10px;
+  }
+  
+  ion-card-content {
+    /* Ajustes adicionales para el contenido del card si es necesario */
+    text-align: center;
+  }

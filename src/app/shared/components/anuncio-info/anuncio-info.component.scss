@@ -1,0 +1,17 @@
+.carta-contenido{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ion-card {
+    flex-direction: column;
+    overflow: hidden;
+    width: 400px;
+    height: 300px;
+
+}
+
+ion-img{
+    width: fit-content;
+}

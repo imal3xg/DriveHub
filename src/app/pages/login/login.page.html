@@ -1,0 +1,16 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>PÁGINA LOG IN</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="perf-panel">
+    <app-perfil-info
+      *ngFor="let perfil of (perfilService.perfiles$ | async)"
+      [perfil]="perfil"
+      (onCardClicked)="goToProfilePage(perfil.id)"
+    >
+    </app-perfil-info>
+  </div>
+</ion-content>
