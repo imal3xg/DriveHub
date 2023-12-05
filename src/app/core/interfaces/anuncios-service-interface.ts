@@ -1,12 +1,12 @@
 import { Observable } from "rxjs";
-import { Anuncio } from "./anuncios";
+import { Anuncio, PaginatedAnuncios } from "./anuncios";
 
 export interface AnunciosServiceInterface {
     /**
      * Obtiene todos los anuncios de la lista
      * @returns Observable de toda la lista de anuncios
      */
-    getAllAnuncios():Observable<Anuncio[]>;
+    getAllAnuncios():Observable<PaginatedAnuncios>;
     /**
      * Obtiene un anuncio de la lista
      * @returns Observable del anuncio obtenido

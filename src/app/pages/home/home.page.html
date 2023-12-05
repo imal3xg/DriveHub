@@ -12,9 +12,9 @@
 <ion-content [fullscreen]="true">
   <div class="anun-panel">
     <app-anuncio-info
-      *ngFor="let anuncios of (anunciosService.anuncios$ | async)"
+      *ngFor="let anuncios of anuncios$ | async"
       [anuncio]="anuncios"
-      (onCardClicked)="goToAnuncioPage(anuncios.id)"
+      (onCardClicked)="onCardClicked(anuncios.id)"
     >
     </app-anuncio-info>
   </div>

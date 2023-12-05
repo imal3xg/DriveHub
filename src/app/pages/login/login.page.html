@@ -1,16 +1,22 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>PÁGINA LOG IN</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <div class="perf-panel">
-    <app-perfil-info
-      *ngFor="let perfil of (perfilService.perfiles$ | async)"
-      [perfil]="perfil"
-      (onCardClicked)="goToProfilePage(perfil.id)"
-    >
-    </app-perfil-info>
+  
+  <div class="container">
+    <ion-card>
+      <ion-card-header>
+        <div class="logo">
+          <ion-thumbnail>
+            <img alt="logo of tasks" src="./../../../assets/imgs/logo_drivehub-removebg-preview.png" />
+          </ion-thumbnail>
+          <ion-text >LOG IN PAGE</ion-text>
+        </div>
+        
+      </ion-card-header>
+      <ion-card-content>
+        <div class="ion-text-end">
+          <ion-button fill="clear" style="text-transform: none;">{{'login.noAccount'}}</ion-button>
+        </div>
+        <app-login-form (onsubmit)="onLogin($event)"></app-login-form>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>

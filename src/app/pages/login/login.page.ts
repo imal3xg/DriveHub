@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalController, ToastController } from '@ionic/angular';
-import { PerfilService } from 'src/app/core/services/perfil.service';
+import { UserCredentials } from 'src/app/core/interfaces/user-credentials';
+import { AuthService } from 'src/app/core/services/api/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,17 +11,22 @@ import { PerfilService } from 'src/app/core/services/perfil.service';
 export class LoginPage implements OnInit {
 
   constructor(
-    private router:Router,
-    public perfilService:PerfilService,
-    private toast:ToastController,
-    private modal:ModalController
+    private auth:AuthService,
+    private router:Router
   ) { }
 
-  ngOnInit():void{
-    this.perfilService.getAllPerfiles().subscribe();
+  ngOnInit() {  
   }
 
-  goToProfilePage(id: number) {
-    this.router.navigate(['/perfil', id]);
+  onLogin(credentials:UserCredentials){
+    this.auth.login(credentials).subscribe({
+      next:data=>{
+        
+      },
+      error:err=>{
+        console.log(err);
+      }
+    });
   }
+
 }

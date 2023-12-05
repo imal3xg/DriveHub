@@ -22,16 +22,6 @@ export class AnuncioPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    // Recuperar el id de la URL
-    this.route.params.subscribe(params => {
-      const id = +params['id']; // '+' convierte el parámetro a número si es un string
-      this.anunciosService.anuncios$.subscribe(anuncios => {
-        this.anuncio = anuncios.find(anuncio => anuncio.id === id);
-      });
-  
-      // Ahora, puedes usar el id para cargar la información del anuncio
-      // (implementa lógica para cargar datos según el id)
-    });
   }
 
 }
