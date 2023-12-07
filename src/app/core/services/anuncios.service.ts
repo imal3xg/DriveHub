@@ -24,21 +24,35 @@ export class AnunciosService implements AnunciosServiceInterface{
     private dataService:DataService,
     private mapping:MappingService
   ) {}
+/*
   public addAnuncio(anuncio:Anuncio):Observable<Anuncio>{
     return this.dataService.post<Anuncio>("anuncio", anuncio).pipe(tap(_=>{
       this.getAllAnuncios().subscribe();
     }))
   }
 
-  public query(q:string):Observable<PaginatedAnuncios>{
+  public query(q: string): Observable<PaginatedAnuncios> {
     // Si coincide el tipo de datos que recibo con mi interfaz
-    return this.dataService.query<any>(this.mapping.queryAnunciosUrl(), {}).pipe(map(this.mapping.mapAnuncios.bind(this.mapping)));
+    return this.dataService.query<any>('anuncios', {}).pipe(map(response => {
+      return {
+        data: response.data.map(anuncio => {
+          return {
+            id: anuncio.id,
+            marca: anuncio.marca,
+            modelo: anuncio.modelo,
+            year: new Date(anuncio.year),
+            precio: anuncio.precio,
+            img: anuncio.img
+          };
+        }),
+        pagination: response.pagination
+      };
+    }));
   }
 
-  public getAllAnuncios():Observable<PaginatedAnuncios>{
-    // Si coincide el tipo de datos que recibo con mi interfaz
-    return this.dataService.query<any>(this.mapping.queryAnunciosUrl(), {}).pipe(map(this.mapping.mapAnuncios.bind(this.mapping)),tap(anuncios=>{
-      this._anuncios.next(anuncios);
+  public getAllAnuncios(): Observable<PaginatedAnuncios> {
+    return this.dataService.query<any>(this.mapping.queryAnunciosUrl(), {}).pipe(map(response => {
+      return this.mapping.mapAnuncios(response);
     }));
   }
 
@@ -52,5 +66,5 @@ export class AnunciosService implements AnunciosServiceInterface{
 
   public delAnuncio(anuncio:Anuncio):Observable<Anuncio>{
     return this.dataService.delete<any>(this.mapping.deleteAnuncioUrl(anuncio.id!)).pipe(map(this.mapping.mapAnuncio.bind(this.mapping)));
-  }
+  } */
 }

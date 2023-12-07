@@ -14,29 +14,13 @@ import { ApiService } from './core/services/api/api.service';
 import { AuthStrapiService } from './core/services/api/strapi/auth-strapi.service';
 import { DataService } from './core/services/api/data.service';
 import { JwtService } from './core/services/jwt.service';
-import { DataStrapiService } from './core/services/api/strapi/data-strapi.service';
 import { SharedModule } from './shared/shared.module';
-import { MediaService } from './core/services/api/media.service';
-import { MediaStrapiService } from './core/services/api/strapi/media-strapi.service';
 
-export function MediaServiceFactory(
-  api:ApiService){
-    return new MediaStrapiService(api);
-}
-export function DataServiceFactory(
-  api:ApiService){
-    return new DataStrapiService(api);
-} 
-export function httpProviderFactory(
-  http:HttpClient,
-  platform:Platform) {
+export function httpProviderFactory(http: HttpClient) {
   return new HttpClientWebProvider(http);
 }
 
-export function AuthServiceFactory(
-  jwt:JwtService,
-  api:ApiService
-) {
+export function AuthServiceFactory(jwt: JwtService, api: ApiService) {
   return new AuthStrapiService(jwt, api);
 }
 
@@ -60,16 +44,6 @@ export function AuthServiceFactory(
       provide: AuthService,
       deps: [JwtService, ApiService],
       useFactory: AuthServiceFactory,  
-    },
-    {
-      provide: DataService,
-      deps: [ApiService],
-      useFactory: DataServiceFactory,  
-    },
-    {
-      provide: MediaService,
-      deps: [ApiService],
-      useFactory: MediaServiceFactory,  
     }
   ],
   bootstrap: [AppComponent],

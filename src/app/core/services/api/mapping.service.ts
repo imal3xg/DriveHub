@@ -1,22 +1,22 @@
 import { Injectable } from "@angular/core";
 import { PaginatedData } from "../../interfaces/data";
-import { Anuncio } from "../../interfaces/anuncios";
+import { User } from "../../interfaces/user";
 
 @Injectable({
   providedIn: 'root'
 })
 export abstract class MappingService {
 
-  public abstract queryAnunciosUrl():string;
+  public abstract queryUsersUrl():string;
 
-  public abstract getAnuncioUrl(id:number):string;
+  public abstract getUserUrl(id:number):string;
 
-  public abstract updateAnuncioUrl(id:number):string;
+  public abstract updateUserUrl(id:number):string;
 
-  public abstract deleteAnuncioUrl(id:number):string;
+  public abstract deleteUserUrl(id:number):string;
   
-  public abstract mapAnuncios(data:PaginatedData<any>):PaginatedData<Anuncio>;
+  public abstract mapUsers(data:PaginatedData<any>):PaginatedData<User>;
 
-  public abstract mapAnuncio(data:any):Anuncio;
+  public abstract mapUser(data:any):User;
   
 }

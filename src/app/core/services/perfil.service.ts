@@ -16,16 +16,16 @@ export class PerfilService implements PerfilServiceInterface{
   constructor(private http:HttpClient) {}
 
   getAllPerfiles(): Observable<Perfil[]> {
-    return this.http.get<Perfil[]>(environment.URL_BASE+'profiles').pipe(tap((perfiles:Perfil[])=>{
+    return this.http.get<Perfil[]>(environment.apiUrl+'profiles').pipe(tap((perfiles:Perfil[])=>{
       this._perfil.next(perfiles);
     }))
   }
   getPerfil(id:number):Observable<Perfil>{
-    return this.http.get<Perfil>(environment.URL_BASE+`profiles/${id}`);
+    return this.http.get<Perfil>(environment.apiUrl+`profiles/${id}`);
   }
   updatePerfil(perf: Perfil): Observable<Perfil> {
     return new Observable<Perfil>(observer=>{
-      this.http.patch<Perfil>(environment.URL_BASE+`profiles/${perf.id}`, perf).subscribe(_=>{
+      this.http.patch<Perfil>(environment.apiUrl+`profiles/${perf.id}`, perf).subscribe(_=>{
         this.getAllPerfiles().subscribe(_=>{
           this.getPerfil(perf.id).subscribe(_perf=>{
             observer.next(_perf);

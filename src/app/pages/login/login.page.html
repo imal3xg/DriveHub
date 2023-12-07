@@ -13,9 +13,10 @@
       </ion-card-header>
       <ion-card-content>
         <div class="ion-text-end">
-          <ion-button fill="clear" style="text-transform: none;">{{'login.noAccount'}}</ion-button>
+          <ion-button [routerLink]="['/register']" fill="clear" style="text-transform: none;">{{'login.noAccount'}}</ion-button>
         </div>
         <app-login-form (onsubmit)="onLogin($event)"></app-login-form>
+
       </ion-card-content>
     </ion-card>
   </div>

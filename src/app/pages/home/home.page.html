@@ -1,21 +1,9 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>DRIVEHUB HOME</ion-title>
-    <ion-buttons slot="end">
-      <ion-button fill="clear" aria-label="Filtro" (click)="onFilter()" class="filter">
-        <ion-icon slot="icon-only" color="primary" name="filter-outline" aria-hidden="true"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <div class="anun-panel">
-    <app-anuncio-info
-      *ngFor="let anuncios of anuncios$ | async"
-      [anuncio]="anuncios"
-      (onCardClicked)="onCardClicked(anuncios.id)"
-    >
-    </app-anuncio-info>
+  <div id="container">
+    <div class="flex-button">
+      <ion-button [routerLink]="'/build-info'">Builds</ion-button>
+      <ion-button [routerLink]="'/item'">Items</ion-button>
+      <ion-button [routerLink]="'/about'">About</ion-button>
+    </div>
   </div>
 </ion-content>

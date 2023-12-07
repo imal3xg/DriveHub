@@ -5,7 +5,7 @@ import { ApiService } from '../api.service';
 import { DataService } from '../data.service';
 import { PaginatedData } from '../../../interfaces/data';
 
-export class DataStrapiService extends DataService{
+export class StrapiDataService extends DataService{
 
   constructor(
     protected api:ApiService
@@ -23,7 +23,7 @@ export class DataStrapiService extends DataService{
 
   public get<T>(resource:string):Observable<T>{
     return this.api.get(`/${resource}`).pipe(map((response:StrapiResponse<T>)=>{
-      return response.data.attributes;
+      return {id:response.data.id, ...(response.data.attributes)};
     }));
   }
 

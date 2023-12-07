@@ -4,7 +4,6 @@ import { UserCredentials } from '../../interfaces/user-credentials';
 import { UserRegisterInfo } from '../../interfaces/user-register-info';
 import { JwtService } from '../jwt.service';
 import { ApiService } from './api.service';
-import { StrapiUploadResponse } from '../../interfaces/strapi';
 
 
 

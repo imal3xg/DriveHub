@@ -10,7 +10,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     SharedModule,
     LoginPageRoutingModule,
-    
   ],
   declarations: [LoginPage]
 })
