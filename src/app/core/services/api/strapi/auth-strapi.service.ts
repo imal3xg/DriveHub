@@ -101,7 +101,7 @@ export class AuthStrapiService extends AuthService {
         next: async (user: StrapiMe) => {
           console.log("Paso 0:" + obs);
           let extended_user: StrapiArrayResponse<StrapiExtendedUser> = await lastValueFrom(
-            this.apiSvc.get(`/users-extensions?filters[users_permissions_user]=${user.id}`)
+            this.apiSvc.get(`/user-extensions?filters[users_permissions_user]=${user.id}`)
           );
           console.log("Paso 1:" + extended_user);
           let ret: User = {
