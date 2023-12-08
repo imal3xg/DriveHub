@@ -24,3 +24,10 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+@font-face {
+    font-family: 'BEBAS';
+    src: url('./assets/fonts/bebas_neue/BebasNeue-Regular.ttf') format('truetype'); /* Reemplaza con la ubicación y nombre de tus archivos de fuente */
+    font-weight: normal;
+    font-style: normal;
+}

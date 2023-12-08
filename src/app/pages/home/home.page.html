@@ -1,9 +1,18 @@
-<ion-content [fullscreen]="true">
-  <div id="container">
-    <div class="flex-button">
-      <ion-button [routerLink]="'/build-info'">Builds</ion-button>
-      <ion-button [routerLink]="'/item'">Items</ion-button>
-      <ion-button [routerLink]="'/about'">About</ion-button>
-    </div>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>DRIVEHUB HOME</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="offset-header" [fullscreen]="false">
+  <div class="anun-panel">
+    <app-anuncio-info 
+      *ngFor="let anun of anuns$ | async" 
+      [anun]="anun" 
+      (onCardClicked)="onCardClicked(anun)" 
+      >
+    </app-anuncio-info>
+
   </div>
+  <!--<ion-loading [isOpen]="loading$ | async" class="custom-loading"  message="Loading..." ></ion-loading>-->
 </ion-content>

@@ -1,5 +1,10 @@
-<div class="carta-contenido">
-  <ion-card button (click)="onCardClick()">
-      <ion-img [src]="anuncio.img!" alt="imagen anuncio"></ion-img>
-  </ion-card>
-</div>
+<ion-card button (click)="onCardClick()">
+  <ion-card-content>
+    <ion-img *ngIf="!anun || !anun.img" alt="Silhouette of a person's head" src="./../../../../assets/imgs/21aefa49-6698-4d8e-b09c-09266ef80f42.jpg" />
+    <ion-img *ngIf="anun && anun.img" alt="Silhouette of a person's head" [src]="anun.img" />
+    <div class="contenedor">
+      <h1 class="titulo">{{anun?.marca}} {{anun?.modelo}}</h1>
+      <h1 class="price">{{anun?.precio}}€</h1>
+    </div>
+  </ion-card-content>
+</ion-card>

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+import { Anuncio } from 'src/app/core/interfaces/anuncios';
 
 @Component({
   selector: 'app-anuncio-detail',
@@ -7,12 +9,16 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./anuncio-detail.component.css']
 })
 export class AnuncioDetailComponent implements OnInit {
-  anuncioId: number | undefined;
+  @Input() anuncio:Anuncio | null=null;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private _modal: ModalController
+  ) {}
 
-  ngOnInit() {
-    this.anuncioId = +this.route.snapshot.paramMap.get('id')!!;
-    // Aquí puedes cargar los detalles del anuncio utilizando el anuncioId
+  ngOnInit() {}
+
+  onCancel(){
+    this._modal.dismiss(null, 'cancel');
   }
 }

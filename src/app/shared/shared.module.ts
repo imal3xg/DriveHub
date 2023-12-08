@@ -6,7 +6,9 @@ import { RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { AnuncioInfoComponent } from './components/anuncio-info/anuncio-info.component';
+import { AnuncioDetailComponent } from './components/anuncio-detail/anuncio-detail.component';
 import { PerfilInfoComponent } from './components/perfil-info/perfil-info.component';
+import { AnuncioItemComponent } from './components/anuncio-item/anuncio-item.component';
 
 
 
@@ -15,6 +17,8 @@ import { PerfilInfoComponent } from './components/perfil-info/perfil-info.compon
   declarations: [
     LoginFormComponent,
     AnuncioInfoComponent,
+    AnuncioDetailComponent,
+    AnuncioItemComponent,
     PerfilInfoComponent,
   ],
   imports: [
@@ -30,6 +34,8 @@ import { PerfilInfoComponent } from './components/perfil-info/perfil-info.compon
     FormsModule,
     LoginFormComponent,
     AnuncioInfoComponent,
+    AnuncioDetailComponent,
+    AnuncioItemComponent,
     PerfilInfoComponent
   ]
 })

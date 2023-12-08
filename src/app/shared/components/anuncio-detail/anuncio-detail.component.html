@@ -1,3 +1,20 @@
-<p>
-  anuncio-detail works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="primary" fill="clear" (click)="onCancel()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-img *ngIf="!anuncio || !anuncio.img" src="https://noticias.coches.com/wp-content/uploads/2023/01/Nissan-GT-R-2023-35.jpeg" />
+  <ion-img *ngIf="anuncio && anuncio.img" alt="Silhouette of a person's head" [src]="anuncio.img" />
+  <div class="contenedor">
+    <h1>{{anuncio?.marca}} {{anuncio?.modelo}}</h1>
+    <h1>{{anuncio?.precio}}€</h1>
+    <h1>Año: {{anuncio?.year}}</h1>
+    <h1>Descripción:</h1>
+    <h1>Localización:</h1>
+  </div>
+</ion-content>

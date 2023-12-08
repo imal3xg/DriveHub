@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { async } from '@angular/core/testing';
 import { BehaviorSubject, Observable, map, tap } from 'rxjs';
 import { DataService } from './api/data.service';
-import { MappingService } from './api/mapping.service';
+import { MappingAnunciosService } from './api/mapping-anuncios.service';
 import { PaginatedAnuncios, Anuncio } from '../interfaces/anuncios';
 import { AnunciosServiceInterface } from '../interfaces/anuncios-service-interface';
 import { environment } from 'src/environments/environment';
@@ -22,9 +22,9 @@ export class AnunciosService implements AnunciosServiceInterface{
   constructor(
     private http:HttpClient,
     private dataService:DataService,
-    private mapping:MappingService
+    private mapping:MappingAnunciosService
   ) {}
-/*
+
   public addAnuncio(anuncio:Anuncio):Observable<Anuncio>{
     return this.dataService.post<Anuncio>("anuncio", anuncio).pipe(tap(_=>{
       this.getAllAnuncios().subscribe();
@@ -66,5 +66,5 @@ export class AnunciosService implements AnunciosServiceInterface{
 
   public delAnuncio(anuncio:Anuncio):Observable<Anuncio>{
     return this.dataService.delete<any>(this.mapping.deleteAnuncioUrl(anuncio.id!)).pipe(map(this.mapping.mapAnuncio.bind(this.mapping)));
-  } */
+  }
 }
