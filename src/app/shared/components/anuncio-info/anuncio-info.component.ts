@@ -2,18 +2,14 @@ import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@
 import { Router } from '@angular/router';
 import { Anuncio } from 'src/app/core/interfaces/anuncios';
 
-export interface UserInfoFavClicked{
-  fav:boolean | undefined;
-}
-
 @Component({
   selector: 'app-anuncio-info',
   templateUrl: './anuncio-info.component.html',
-  styleUrls: ['./anuncio-info.component.scss'],
+  styleUrls: ['./anuncio-info.component.css']
 })
-export class AnuncioInfoComponent  implements OnInit{
 
-  
+export class AnuncioInfoComponent implements OnInit{
+
   @Input() anun:Anuncio | null=null;
 
   @Output() onCardClicked:EventEmitter<void> = new EventEmitter<void>();
@@ -23,7 +19,6 @@ export class AnuncioInfoComponent  implements OnInit{
     private router:Router
   ) { }
   
-
   ngOnInit() {}
 
   onCardClick(){

@@ -6,6 +6,6 @@ export interface Perfil {
     name:string,
     surname:string,
     edad:number,
-    local:string,
+    location:string,
     img?:string
 }

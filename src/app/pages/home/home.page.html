@@ -1,9 +1,3 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>DRIVEHUB HOME</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content class="offset-header" [fullscreen]="false">
   <div class="anun-panel">
     <app-anuncio-info 
@@ -12,7 +6,6 @@
       (onCardClicked)="onCardClicked(anun)" 
       >
     </app-anuncio-info>
-
   </div>
   <!--<ion-loading [isOpen]="loading$ | async" class="custom-loading"  message="Loading..." ></ion-loading>-->
 </ion-content>

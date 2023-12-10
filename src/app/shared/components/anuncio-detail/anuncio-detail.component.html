@@ -7,14 +7,18 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding">
-  <ion-img *ngIf="!anuncio || !anuncio.img" src="https://noticias.coches.com/wp-content/uploads/2023/01/Nissan-GT-R-2023-35.jpeg" />
-  <ion-img *ngIf="anuncio && anuncio.img" alt="Silhouette of a person's head" [src]="anuncio.img" />
+
+<ion-content>
+  <ion-img *ngIf="!anun || !anun.img" src="https://noticias.coches.com/wp-content/uploads/2023/01/Nissan-GT-R-2023-35.jpeg"></ion-img>
+  <ion-img *ngIf="anun && anun.img" alt="Silhouette of a person's head" [src]="anun.img"></ion-img>
   <div class="contenedor">
-    <h1>{{anuncio?.marca}} {{anuncio?.modelo}}</h1>
-    <h1>{{anuncio?.precio}}€</h1>
-    <h1>Año: {{anuncio?.year}}</h1>
-    <h1>Descripción:</h1>
-    <h1>Localización:</h1>
+    <div class="info">
+      <h1 class="nombre">{{anun?.marca}} {{anun?.modelo}}</h1>
+      <h1 class="precio">{{anun?.precio}}€</h1>
+    </div>
+    <h1 class="year">Año: {{anun?.year | transformDate}}</h1>
+    <h1>{{anun?.userprop}}</h1>
+    <h1 class="desc">Descripción:</h1>
+    <h1 class="loc">Localización:</h1>
   </div>
 </ion-content>

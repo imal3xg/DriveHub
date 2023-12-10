@@ -11,12 +11,12 @@ export class MappingStrapiService extends MappingService{
    }
   
   public queryUsersUrl():string{
-    return 'user-extensions?populate=picture&sort=id';
+    return 'user-extensions?sort=id';
     
   }
 
   public getUserUrl(id:number):string{
-    return `user-extensions/${id}/?populate=picture&sort=id`;
+    return `user-extensions/${id}`;
   }
 
   public updateUserUrl(id:number):string{
@@ -34,6 +34,7 @@ export class MappingStrapiService extends MappingService{
               id:user.id,
               name:user.name,
               surname:user.surname,
+              users_permissions_user: user.users_permissions_user,
               picture:user.picture?.data?{
                 id: user.picture.data.id,
                 url_large: user.picture.data.attributes.formats.large?.url,
@@ -51,6 +52,7 @@ export class MappingStrapiService extends MappingService{
       id:data.id,
       name:data.name,
       surname:data.surname,
+      users_permissions_user:data.users_permissions_user,
       picture:data.picture?.data?{
         id: data.picture.data.id,
         url_large: data.picture.data.attributes.formats.large?.url,

@@ -65,7 +65,7 @@ export class AuthStrapiService extends AuthService {
     return new Observable<User>((obs) => {
       const _info: StrapiRegisterPayload = {
         email: info.email,
-        username: info.nickname,
+        username: info.username,
         password: info.password,
       };
       this.apiSvc.post('/auth/local/register', _info).subscribe({
@@ -106,6 +106,8 @@ export class AuthStrapiService extends AuthService {
           console.log("Paso 1:" + extended_user);
           let ret: User = {
             id: user.id,
+            users_permissions_user: extended_user.data[0].id,
+            username: user.username,
             name: extended_user.data[0].attributes.name,
             surname: extended_user.data[0].attributes.surname,
           };

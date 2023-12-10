@@ -9,6 +9,9 @@ import { AnuncioInfoComponent } from './components/anuncio-info/anuncio-info.com
 import { AnuncioDetailComponent } from './components/anuncio-detail/anuncio-detail.component';
 import { PerfilInfoComponent } from './components/perfil-info/perfil-info.component';
 import { AnuncioItemComponent } from './components/anuncio-item/anuncio-item.component';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { TransformDatePipe } from './pipes/transform-date.pipe';
+import { HeaderComponent } from './components/header/header.component';
 
 
 
@@ -16,10 +19,13 @@ import { AnuncioItemComponent } from './components/anuncio-item/anuncio-item.com
 @NgModule({
   declarations: [
     LoginFormComponent,
+    RegisterFormComponent,
+    AnuncioItemComponent,
     AnuncioInfoComponent,
     AnuncioDetailComponent,
-    AnuncioItemComponent,
     PerfilInfoComponent,
+    HeaderComponent,
+    TransformDatePipe,
   ],
   imports: [
     CommonModule,
@@ -33,9 +39,11 @@ import { AnuncioItemComponent } from './components/anuncio-item/anuncio-item.com
     IonicModule, 
     FormsModule,
     LoginFormComponent,
+    RegisterFormComponent,
     AnuncioInfoComponent,
     AnuncioDetailComponent,
     AnuncioItemComponent,
+    HeaderComponent,
     PerfilInfoComponent
   ]
 })

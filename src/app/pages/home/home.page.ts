@@ -64,28 +64,6 @@ export class HomePage implements OnInit {
     this.loadAnun(0, event.target);
   }
 
-  public onDeleteClicked(anun:Anuncio){
-    var _anun:Anuncio = {...anun};
-
-    this.anuns.delAnuncio(_anun).subscribe(
-        {next: anun=>{
-        //Notificamos con un Toast que se ha pulsado
-        const options:ToastOptions = {
-          message:`User deleted`, //mensaje del toast
-          duration:1000, // 1 segundo
-          position:'bottom', // el toast se situa en la parte inferior
-          color:'danger', // color del toast
-          cssClass:'fav-ion-toast' //Una clase que podemos poner en global.scss para configurar el ion-toast
-        };
-        //creamos el toast
-        this.toast.create(options).then(toast=>toast.present());
-        },
-        error: err=>{
-          console.log(err);
-        }
-      });
-  }
-
   public async onCardClicked(anun:Anuncio){
     
     var onDismiss = (info:any)=>{
@@ -131,7 +109,7 @@ export class HomePage implements OnInit {
         }
         break;
         case 'delete':{
-          this.anuns.delAnuncio(info.data).subscribe(async anun=>{
+          this.anuns.deleteAnuncio(info.data).subscribe(async anun=>{
             this.loadAnun();
             const options:ToastOptions = {
             message:"Anuncio deleted",

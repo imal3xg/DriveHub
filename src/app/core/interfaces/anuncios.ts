@@ -1,4 +1,5 @@
 import { PaginatedData } from "./data"
+import { Media } from "./media"
 
 /**
  * Interfaz con los datos que va a tener cada anuncio
@@ -9,7 +10,8 @@ export interface Anuncio {
     modelo: String,
     year: Date,
     precio: number,
-    img?: String
+    img?: Media|null,
+    userprop: string,
 }
 
 export type PaginatedAnuncios = PaginatedData<Anuncio>

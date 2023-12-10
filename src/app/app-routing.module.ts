@@ -4,22 +4,18 @@ import { AuthGuard } from './core/guards/auth.guards';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
-    canActivate:[AuthGuard]
-  },
-  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
   },
   {
-    path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then((m) => m.LoginPageModule),
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
+    canActivate:[AuthGuard]
   },
   {
-    path: 'anuncio/:id',
-    loadChildren: () => import('./pages/anuncio/anuncio.module').then( m => m.AnuncioPageModule)
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then((m) => m.LoginPageModule),
   },
   {
     path: 'perfil',
@@ -28,6 +24,10 @@ const routes: Routes = [
   {
     path: 'preguntas',
     loadChildren: () => import('./pages/preguntas/preguntas.module').then( m => m.PreguntasPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   },
 ];
 

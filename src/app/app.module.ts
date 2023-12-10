@@ -107,7 +107,10 @@ export function AuthServiceFactory(
         deps: ['backend'],
         useFactory: MappingServiceFactory
       },
-      { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+      {
+        provide: RouteReuseStrategy,
+        useClass: IonicRouteStrategy 
+      },
       {
         provide: HttpClientProvider,
         deps: [HttpClient, Platform],

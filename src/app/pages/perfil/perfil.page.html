@@ -1,23 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>PERFIL</ion-title>
-    <ion-buttons slot="end">
-      <ion-button fill="clear" aria-label="AddAnuncio" (click)="agregarAnuncio()" class="add">
-        <ion-icon slot="icon-only" color="primary" name="add-outline" aria-hidden="true"></ion-icon>
-      </ion-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content [fullscreen]="true">
-  <ion-card>
-    <ion-card-header>
-      <!-- Mostrar la foto de la persona (tamaño normal) -->
-      <ion-img src="{{ perfil.img }}" alt="Foto de perfil"></ion-img>
-    </ion-card-header>
-    <ion-card-content>
-        <h2>{{ perfil.name }} {{ perfil.surname }}</h2>
-        <h2>Edad: {{ perfil.edad }}</h2>
-        <h2>Ciudad: {{ perfil.local }}</h2>
-    </ion-card-content>
-  </ion-card>
+
+<ion-content>
+  <img  *ngIf="!user || !user.picture" alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        <img *ngIf="user && user.picture" alt="Silhouette of a person's head" [src]="user.picture.url_small" />
+  <div class="contenedor">
+    <h1 class="nombre">{{user?.name}} {{user?.surname}}</h1>
+  </div>
 </ion-content>
