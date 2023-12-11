@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/core/interfaces/user';
+import { CustomTranslateService } from 'src/app/core/services/custom-translate.service';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +17,10 @@ export class HeaderComponent  implements OnInit {
   @Output() onProfile: EventEmitter<void> = new EventEmitter<void>()
   @Output() onLanguage = new EventEmitter();
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    public transService: CustomTranslateService
+  ) { }
 
   ngOnInit() {}
 
@@ -30,5 +35,9 @@ export class HeaderComponent  implements OnInit {
 
   logoutClick(event: Event) {
     this.onSignout.emit()
+  }
+
+  onLanguageChanged(event: Event) {
+    this.onLanguage.emit(event);
   }
 }

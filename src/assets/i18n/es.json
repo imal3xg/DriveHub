@@ -1,0 +1,53 @@
+{
+    "home":{
+        "title":"INICIO DE DRIVEHUB"
+    },
+    "perfil":{
+        "title":"ANUNCIOS PROPIOS"
+    },
+    "login":{
+        "user":"Usuario",
+        "pwd":"Contraseña",
+        "noAccount":"¿Necesitas una cuenta?",
+        "submit":"Acceder"
+    },
+    "register":{
+        "email":"Email",
+        "name":"Nombre",
+        "surname":"Apellidos",
+        "nickname":"Apodo",
+        "pwd":"Contraseña",
+        "confirm":"Confirmar contraseña",
+        "login":"Quiero iniciar sesión",
+        "submit":"Registrar"
+    },
+    "anunciodetail":{
+        "year": "Año"
+    },
+    "misanunciodetail":{
+        "create": "Crear anuncio",
+        "edit": "Editar anuncio",
+        "save": "Guardar anuncio",
+        "marca": "Marca",
+        "modelo": "Modelo",
+        "precio": "Precio",
+        "year": "Año"
+    },
+    "header":{
+        "user":{
+            "profile":"Anuncios propios",
+            "signout":"Cerrar sesión"
+        },
+        "languages":{
+            "es":"Español",
+            "en":"Inglés"
+        }
+    },
+    "menu":{
+        "home":"Inicio",
+        "profile":"Anuncios propios",
+        "preguntas":"Preguntas frecuentes",
+        "signout":"Cerrar sesión",
+        "about":"Acerca de mí"
+    }
+}

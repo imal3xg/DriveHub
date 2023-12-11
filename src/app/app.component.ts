@@ -5,6 +5,7 @@ import { User } from './core/interfaces/user';
 import { AuthService } from './core/services/api/auth.service';
 import { ApiService } from './core/services/api/api.service';
 import { IonMenu } from '@ionic/angular';
+import { CustomTranslateService } from './core/services/custom-translate.service';
 
 @Component({
   selector: 'app-root',
@@ -20,10 +21,12 @@ export class AppComponent {
     
   constructor(
     public authSvc: AuthService,
-        private router: Router,
-        private apiSvc: ApiService,
-        public auth: AuthService,
+    private router: Router,
+    private apiSvc: ApiService,
+    public auth: AuthService,
+    public translate: CustomTranslateService
   ) {
+    this.translate.use(this.lang);
     this.authSvc.isLogged$.subscribe(logged => {
       if (logged) {
           // Si el usuario está autenticado, navega a home.

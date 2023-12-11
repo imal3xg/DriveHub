@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-
 import { IonicModule, IonicRouteStrategy, Platform } from '@ionic/angular';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -20,6 +18,9 @@ import { StrapiMediaService } from './core/services/api/strapi/media-strapi.serv
 import { StrapiDataService } from './core/services/api/strapi/data-strapi.service';
 import { MappingService } from './core/services/api/mapping.service';
 import { MediaService } from './core/services/api/media.service';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { createTranslateLoader } from './core/services/custom-translate.service';
 
 export function MappingServiceFactory(
   backend:string){
@@ -72,6 +73,10 @@ export function AuthServiceFactory(
     }
 }
 
+export function httpTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -79,6 +84,13 @@ export function AuthServiceFactory(
     IonicModule.forRoot(), 
     AppRoutingModule,
     HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    }),
     SharedModule
     ],
     providers: [

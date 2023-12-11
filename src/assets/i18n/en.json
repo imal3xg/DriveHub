@@ -1,0 +1,53 @@
+{
+    "home":{
+        "title":"DRIVEHUB HOME"
+    },
+    "perfil":{
+        "title":"MY CARS POSTS"
+    },
+    "login":{
+        "user":"User",
+        "pwd":"Password",
+        "noAccount":"Need an account?",
+        "submit":"Log In"
+    },
+    "register":{
+        "email":"Email",
+        "name":"Name",
+        "surname":"Surname",
+        "nickname":"Nickname",
+        "pwd":"Password",
+        "confirm":"Confirm password",
+        "login":"I want to Log In",
+        "submit":"Register"
+    },
+    "anunciodetail":{
+        "year": "Year"
+    },
+    "misanunciodetail":{
+        "create": "Create post",
+        "edit": "Edit post",
+        "save": "Save post",
+        "marca": "Brand",
+        "modelo": "Model",
+        "precio": "Price",
+        "year": "Year"
+    },
+    "header":{
+        "user":{
+            "profile":"My Cars Posts",
+            "signout":"Log Out"
+        },
+        "languages":{
+            "es":"Spanish",
+            "en":"English"
+        }
+    },
+    "menu":{
+        "home":"HOME",
+        "profile":"MY CARS POSTS",
+        "preguntas":"QUESTIONS",
+        "signout":"LOG OUT",
+        "about":"ABOUT ME"
+    }
+}
