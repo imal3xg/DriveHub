@@ -13,15 +13,16 @@ import { IonMenu } from '@ionic/angular';
 })
 export class AppComponent {
 
-  protected _user = new BehaviorSubject<User | undefined>(undefined);
+    protected _user = new BehaviorSubject<User | undefined>(undefined);
     public user$ = this._user.asObservable();
     lang: string = "es";
+    public user: User | undefined;
     
   constructor(
     public authSvc: AuthService,
         private router: Router,
         private apiSvc: ApiService,
-        public auth: AuthService
+        public auth: AuthService,
   ) {
     this.authSvc.isLogged$.subscribe(logged => {
       if (logged) {
@@ -38,13 +39,13 @@ export class AppComponent {
   }
 
   onLang(lang:string){
-
     this.lang = lang;
     //this.translate.use(this.lang);
-
-
     return false;    
-  
+  }
+
+  toProfilePage(menu:IonMenu){
+    this.router.navigate(['/perfil']);
   }
 
   close(menu:IonMenu){

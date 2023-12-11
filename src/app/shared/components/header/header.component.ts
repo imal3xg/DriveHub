@@ -12,7 +12,7 @@ export class HeaderComponent  implements OnInit {
   @Input() languages:string[] = ["es","en"];
   @Input() languageSelected:string = "es";
   @Output() onSignout: EventEmitter<void> = new EventEmitter<void>()
-  @Output() onProfile = new EventEmitter();
+  @Output() onProfile: EventEmitter<void> = new EventEmitter<void>()
   @Output() onLanguage = new EventEmitter();
 
   constructor() { }
@@ -22,6 +22,10 @@ export class HeaderComponent  implements OnInit {
   setLanguage(lang:string){
     this.languageSelected = lang;
     this.onLanguage.emit(lang);
+  }
+
+  toProfilePage(event: Event) {
+    this.onProfile.emit()
   }
 
   logoutClick(event: Event) {

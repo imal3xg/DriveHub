@@ -1,13 +1,20 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>PERFIL</ion-title>
+    <ion-button fill="clear" aria-label="New Anuncio" (click)="onNewAnuncio()" class="ok">
+      <ion-icon slot="icon-only"  color="primary"  name="add-outline" aria-hidden="true"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <img  *ngIf="!user || !user.picture" alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-        <img *ngIf="user && user.picture" alt="Silhouette of a person's head" [src]="user.picture.url_small" />
-  <div class="contenedor">
-    <h1 class="nombre">{{user?.name}} {{user?.surname}}</h1>
+<ion-content class="offset-header" [fullscreen]="false">
+  <div class="misanun-panel">
+    <app-misanuncio-info 
+      *ngFor="let misanun of misanuns$ | async" 
+      [misanun]="misanun" 
+      (onCardClicked)="onCardClicked(misanun)" 
+      >
+    </app-misanuncio-info>
   </div>
+  <!--<ion-loading [isOpen]="loading$ | async" class="custom-loading"  message="Loading..." ></ion-loading>-->
 </ion-content>

@@ -7,11 +7,13 @@ import { HttpClient } from '@angular/common/http';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { AnuncioInfoComponent } from './components/anuncio-info/anuncio-info.component';
 import { AnuncioDetailComponent } from './components/anuncio-detail/anuncio-detail.component';
-import { PerfilInfoComponent } from './components/perfil-info/perfil-info.component';
 import { AnuncioItemComponent } from './components/anuncio-item/anuncio-item.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { TransformDatePipe } from './pipes/transform-date.pipe';
 import { HeaderComponent } from './components/header/header.component';
+import { MisanuncioInfoComponent } from './components/misanuncio-info/misanuncio-info.component';
+import { MisanuncioDetailComponent } from './components/misanuncio-detail/misanuncio-detail.component';
+import { ImgSelectableComponent } from './components/img-selectable/img-selectable.component';
 
 
 
@@ -23,7 +25,9 @@ import { HeaderComponent } from './components/header/header.component';
     AnuncioItemComponent,
     AnuncioInfoComponent,
     AnuncioDetailComponent,
-    PerfilInfoComponent,
+    MisanuncioInfoComponent,
+    MisanuncioDetailComponent,
+    ImgSelectableComponent,
     HeaderComponent,
     TransformDatePipe,
   ],
@@ -43,8 +47,10 @@ import { HeaderComponent } from './components/header/header.component';
     AnuncioInfoComponent,
     AnuncioDetailComponent,
     AnuncioItemComponent,
-    HeaderComponent,
-    PerfilInfoComponent
+    MisanuncioInfoComponent,
+    MisanuncioDetailComponent,
+    ImgSelectableComponent,
+    HeaderComponent
   ]
 })
 export class SharedModule { }

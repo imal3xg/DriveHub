@@ -96,14 +96,11 @@ export class AuthStrapiService extends AuthService {
   }
   public me(): Observable<User> {
     return new Observable<User>((obs) => {
-      console.log("Paso -1:" + obs)
       this.apiSvc.get('/users/me').subscribe({
         next: async (user: StrapiMe) => {
-          console.log("Paso 0:" + obs);
           let extended_user: StrapiArrayResponse<StrapiExtendedUser> = await lastValueFrom(
             this.apiSvc.get(`/user-extensions?filters[users_permissions_user]=${user.id}`)
           );
-          console.log("Paso 1:" + extended_user);
           let ret: User = {
             id: user.id,
             users_permissions_user: extended_user.data[0].id,
@@ -111,7 +108,6 @@ export class AuthStrapiService extends AuthService {
             name: extended_user.data[0].attributes.name,
             surname: extended_user.data[0].attributes.surname,
           };
-          console.log("Paso2:" + ret);
           obs.next(ret);
           obs.complete();
         },

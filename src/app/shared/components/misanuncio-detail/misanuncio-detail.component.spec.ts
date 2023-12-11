@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { PerfilInfoComponent } from './perfil-info.component';
+import { MisanuncioDetailComponent } from './misanuncio-detail.component';
 
-describe('PerfilInfoComponent', () => {
-  let component: PerfilInfoComponent;
-  let fixture: ComponentFixture<PerfilInfoComponent>;
+describe('MisanuncioDetailComponent', () => {
+  let component: MisanuncioDetailComponent;
+  let fixture: ComponentFixture<MisanuncioDetailComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ PerfilInfoComponent ],
+      declarations: [ MisanuncioDetailComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(PerfilInfoComponent);
+    fixture = TestBed.createComponent(MisanuncioDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
