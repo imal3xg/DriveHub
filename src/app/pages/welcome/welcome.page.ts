@@ -21,8 +21,7 @@ export class WelcomePage implements OnInit {
     this.user = this.apiService.getUser();
     this.apiService.user$.subscribe();
     setTimeout(() => {
-        this.router.navigate(['/home']);
-    }, 10000);
-}
-
+      this.router.navigate(['/home']);
+    }, 3000);
+  }
 }
