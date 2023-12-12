@@ -4,7 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { LoginFormComponent } from './components/login-form/login-form.component';
-import {TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
 import { createTranslateLoader } from '../core/services/custom-translate.service';
@@ -16,6 +16,7 @@ import { MisanuncioInfoComponent } from './components/misanuncio-info/misanuncio
 import { MisanuncioDetailComponent } from './components/misanuncio-detail/misanuncio-detail.component';
 import { ImgSelectableComponent } from './components/img-selectable/img-selectable.component';
 import { TransformDatePipe } from './pipes/transform-date.pipe';
+import { AboutDetailComponent } from './components/about-detail/about-detail.component';
 
 
 
@@ -31,6 +32,7 @@ import { TransformDatePipe } from './pipes/transform-date.pipe';
     MisanuncioDetailComponent,
     ImgSelectableComponent,
     HeaderComponent,
+    AboutDetailComponent,
     TransformDatePipe,
     ],
   imports: [
@@ -59,6 +61,7 @@ import { TransformDatePipe } from './pipes/transform-date.pipe';
     MisanuncioInfoComponent,
     MisanuncioDetailComponent,
     ImgSelectableComponent,
+    AboutDetailComponent,
     HeaderComponent,
     TransformDatePipe,
     TranslateModule

@@ -23,7 +23,6 @@
       [user]="(auth.user$ | async)!"
       [languages]="['es','en']" 
       [languageSelected]="lang" 
-      (onLanguage)="onLang($event)"
       (onProfile)="toProfilePage(menu)"
       (onSignout)="onSignOut(menu)"></app-header>
     <ion-router-outlet></ion-router-outlet>

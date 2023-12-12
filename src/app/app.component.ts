@@ -22,28 +22,26 @@ export class AppComponent {
   constructor(
     public authSvc: AuthService,
     private router: Router,
-    private apiSvc: ApiService,
+    private apiService: ApiService,
     public auth: AuthService,
     public translate: CustomTranslateService
   ) {
     this.translate.use(this.lang);
     this.authSvc.isLogged$.subscribe(logged => {
       if (logged) {
-          // Si el usuario está autenticado, navega a home.
-          this.authSvc.me().subscribe(data => {
-              apiSvc.updateUser(data);
-              this.router.navigate(['/home']);
-          });
+        this.authSvc.me().subscribe(data => {
+          apiService.updateUser(data);
+          this.router.navigate(['/home']);
+        });
       }
       else
-          // Si el usuario no está autenticado, navega a welcome.
-          this.router.navigate(['/login']);
-  });
+        this.router.navigate(['/welcome']);
+      }
+    );
   }
 
   onLang(lang:string){
     this.lang = lang;
-    //this.translate.use(this.lang);
     return false;    
   }
 

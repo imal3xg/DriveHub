@@ -1,6 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
+import { BehaviorSubject } from 'rxjs';
 import { User } from 'src/app/core/interfaces/user';
+import { AuthService } from 'src/app/core/services/api/auth.service';
 import { CustomTranslateService } from 'src/app/core/services/custom-translate.service';
 
 @Component({
@@ -10,23 +14,36 @@ import { CustomTranslateService } from 'src/app/core/services/custom-translate.s
 })
 export class HeaderComponent  implements OnInit {
 
+  private _user = new BehaviorSubject<User | null>(null);
+  public user$ = this._user.asObservable();
+
   @Input() user:User | null=null;
-  @Input() languages:string[] = ["es","en"];
-  @Input() languageSelected:string = "es";
+  @Input() languages: string[] = ['es', 'en'];
+  @Input() languageSelected: string = 'es';
   @Output() onSignout: EventEmitter<void> = new EventEmitter<void>()
   @Output() onProfile: EventEmitter<void> = new EventEmitter<void>()
-  @Output() onLanguage = new EventEmitter();
 
   constructor(
-    private router: Router,
-    public transService: CustomTranslateService
-  ) { }
+    private _menu: MenuController,
+    private _router: Router,
+    private _auth: AuthService,
+    private _lang: TranslateService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit(): void {
+    this._auth.isLogged$.subscribe((logged) => {
+      if (logged) {
+        this._auth.me().subscribe((user) => {
+          this._user.next(user);
+        });
+      }
+    });
+    this._lang.use('es');
+  }
 
-  setLanguage(lang:string){
+  setLanguage(lang: string) {
     this.languageSelected = lang;
-    this.onLanguage.emit(lang);
+    this._lang.use(lang);
   }
 
   toProfilePage(event: Event) {
@@ -35,9 +52,5 @@ export class HeaderComponent  implements OnInit {
 
   logoutClick(event: Event) {
     this.onSignout.emit()
-  }
-
-  onLanguageChanged(event: Event) {
-    this.onLanguage.emit(event);
   }
 }
