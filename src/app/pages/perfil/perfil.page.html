@@ -8,13 +8,13 @@
 </ion-header>
 
 <ion-content class="offset-header" [fullscreen]="false">
-  <div class="misanun-panel">
-    <app-misanuncio-info 
-      *ngFor="let misanun of misanuns$ | async" 
-      [misanun]="misanun" 
-      (onCardClicked)="onCardClicked(misanun)" 
+  <div class="anun-panel">
+    <app-anuncio-info 
+      *ngFor="let anun of anuns$ | async" 
+      [anun]="anun" 
+      (onCardClicked)="onCardClicked(anun)" 
       >
-    </app-misanuncio-info>
+    </app-anuncio-info>
   </div>
   <!--<ion-loading [isOpen]="loading$ | async" class="custom-loading"  message="Loading..." ></ion-loading>-->
 </ion-content>

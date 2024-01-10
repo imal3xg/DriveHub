@@ -26,16 +26,16 @@ export class MisanuncioDetailComponent  implements OnInit {
   constructor(
     private _modal:ModalController,
     private formBuilder:FormBuilder
-    ) { 
-      this.form = this.formBuilder.group({
-        id:[null],
-        marca:['', [Validators.required]],
-        modelo:['', [Validators.required]],
-        precio:[0, [Validators.required]],
-        year:[1-1-2020, [Validators.required]],
-        img:['']
-      })
-    }
+  ) { 
+    this.form = this.formBuilder.group({
+      id:[null],
+      marca:['', [Validators.required]],
+      modelo:['', [Validators.required]],
+      precio:[0, [Validators.required]],
+      year:[1-1-2020, [Validators.required]],
+      img:['']
+    })
+  }
 
   ngOnInit() {}
 

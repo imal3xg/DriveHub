@@ -11,12 +11,14 @@ import { createTranslateLoader } from '../core/services/custom-translate.service
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { AnuncioInfoComponent } from './components/anuncio-info/anuncio-info.component';
 import { AnuncioDetailComponent } from './components/anuncio-detail/anuncio-detail.component';
+import { AnuncioPerfilDetailComponent } from './components/anuncio-perfil-detail/anuncio-perfil-detail.component';
 import { AnuncioItemComponent } from './components/anuncio-item/anuncio-item.component';
 import { MisanuncioInfoComponent } from './components/misanuncio-info/misanuncio-info.component';
 import { MisanuncioDetailComponent } from './components/misanuncio-detail/misanuncio-detail.component';
 import { ImgSelectableComponent } from './components/img-selectable/img-selectable.component';
 import { TransformDatePipe } from './pipes/transform-date.pipe';
 import { AboutDetailComponent } from './components/about-detail/about-detail.component';
+import { AnuncioFormComponent } from './components/anuncio-form/anuncio-form.component';
 
 
 
@@ -26,7 +28,9 @@ import { AboutDetailComponent } from './components/about-detail/about-detail.com
     LoginFormComponent,
     RegisterFormComponent,
     AnuncioItemComponent,
+    AnuncioFormComponent,
     AnuncioInfoComponent,
+    AnuncioPerfilDetailComponent,
     AnuncioDetailComponent,
     MisanuncioInfoComponent,
     MisanuncioDetailComponent,
@@ -56,8 +60,10 @@ import { AboutDetailComponent } from './components/about-detail/about-detail.com
     LoginFormComponent,
     RegisterFormComponent,
     AnuncioItemComponent,
+    AnuncioFormComponent,
     AnuncioInfoComponent,
     AnuncioDetailComponent,
+    AnuncioPerfilDetailComponent,
     MisanuncioInfoComponent,
     MisanuncioDetailComponent,
     ImgSelectableComponent,

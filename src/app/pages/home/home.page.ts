@@ -53,11 +53,23 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.auth.isLogged$.subscribe(logged=>{
-      if(logged){
-        this.loadAnun();
+    this.auth.user$.subscribe(user=> {
+      if (user?.id){
+        this.getAnuncios(user.id);
       }
     })
+  }
+
+  private getAnuncios(userId: number) {
+    this.anuns.getAllAnuncios(userId).subscribe({
+      next:response => {
+        this._anuns.next(response.data);
+        this._pagination.next(response.pagination);
+      },
+      error:err => {
+         console.log('Error al obtener los anuncios:', err);
+      }
+    });   
   }
 
   doRefresh(event:any){

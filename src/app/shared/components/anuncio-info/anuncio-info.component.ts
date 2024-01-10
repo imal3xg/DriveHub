@@ -10,7 +10,7 @@ import { Anuncio } from 'src/app/core/interfaces/anuncios';
 
 export class AnuncioInfoComponent implements OnInit{
 
-  @Input() anun:Anuncio | null=null;
+  @Input() anun!:Anuncio;
 
   @Output() onCardClicked:EventEmitter<void> = new EventEmitter<void>();
   @Output() onDeleteClicked:EventEmitter<void> = new EventEmitter<void>();

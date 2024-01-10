@@ -5,3 +5,9 @@ ion-title{
 .filter{
   position: relative;
 }
+
+.anun-panel{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:flex-start;
+}

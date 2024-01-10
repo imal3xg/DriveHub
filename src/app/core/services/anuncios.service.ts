@@ -12,7 +12,7 @@ export class AnuncioNotFoundException extends Error {
 }
 
 interface CrudAnuncios {
-  getAllAnuncios(userprop: number): Observable<PaginatedAnuncios>;
+  getAllAnuncios(userId: number): Observable<PaginatedAnuncios>;
   addAnuncio(anun: Anuncio): Observable<Anuncio>;
   updateAnuncio(anun: Anuncio): Observable<Anuncio>;
   deleteAnuncio(anun: Anuncio): Observable<Anuncio>;
@@ -38,7 +38,7 @@ export class AnunciosService implements CrudAnuncios{
         modelo: anuncio.modelo,
         precio: anuncio.precio,
         year: anuncio.year,
-        userprop: anuncio.userprop,
+        userId: anuncio.userId,
         img: anuncio.img
     }
     return this.dataService.post<Anuncio>(endPoint, _anun);
@@ -51,7 +51,7 @@ export class AnunciosService implements CrudAnuncios{
         data: response.data.map(anuncio => {
           return {
             id: anuncio.id,
-            userprop: anuncio.userprop,
+            userId: anuncio.userId,
             marca: anuncio.marca,
             modelo: anuncio.modelo,
             year: new Date(anuncio.year),
@@ -64,9 +64,43 @@ export class AnunciosService implements CrudAnuncios{
     }));
   }
 
-  public getAllAnuncios(): Observable<PaginatedAnuncios> {
-    return this.dataService.query<any>(this.mapping.queryAnunciosUrl(), {}).pipe(map(response => {
-      return this.mapping.mapAnuncios(response);
+  public getAllAnuncios(userId: number): Observable<PaginatedAnuncios> {
+    const apiUrl = "anuncios?sort=publishedAt:desc&populate=users_permissions_user";
+    return this.dataService.query<any>(apiUrl, {}).pipe(map(response => {
+      return {
+        data: response.data.map(anuncio => {
+          return {
+            id: anuncio.id,
+            userId: anuncio.userId,
+            marca: anuncio.marca,
+            modelo: anuncio.modelo,
+            year: new Date(anuncio.year),
+            precio: anuncio.precio,
+            img: anuncio.img
+          };
+        }),
+        pagination: response.pagination
+      };
+    }));
+  }
+
+  public getAllUserAnuncios(userId: number): Observable<PaginatedAnuncios> {
+    const apiUrl = "anuncios?sort=publishedAt:desc&populate=users_permissions_user&filters[users_permissions_user]=" + userId;
+    return this.dataService.query<any>(apiUrl, {}).pipe(map(response => {
+      return {
+        data: response.data.map(anuncio => {
+          return {
+            id: anuncio.id,
+            userId: anuncio.userId,
+            marca: anuncio.marca,
+            modelo: anuncio.modelo,
+            year: new Date(anuncio.year),
+            precio: anuncio.precio,
+            img: anuncio.img
+          };
+        }),
+        pagination: response.pagination
+      };
     }));
   }
 

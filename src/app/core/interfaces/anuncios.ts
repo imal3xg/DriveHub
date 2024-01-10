@@ -11,7 +11,7 @@ export interface Anuncio {
     year: Date,
     precio: number,
     img?: Media|null,
-    userprop: string,
+    userId: number,
 }
 
 export type PaginatedAnuncios = PaginatedData<Anuncio>
