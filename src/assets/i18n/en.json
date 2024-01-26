@@ -25,9 +25,6 @@
         "submit":"Register"
     },
     "anunciodetail":{
-        "year": "Year"
-    },
-    "misanunciodetail":{
         "create": "Create post",
         "edit": "Edit post",
         "save": "Save post",

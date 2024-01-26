@@ -31,19 +31,6 @@ export class AnunciosService implements CrudAnuncios{
     private mapping:MappingAnunciosService
   ) {}
 
-  public addAnuncio(anuncio: Anuncio): Observable<Anuncio> {
-    const endPoint = "anuncios";
-    var _anun: any = {
-        marca: anuncio.marca,
-        modelo: anuncio.modelo,
-        precio: anuncio.precio,
-        year: anuncio.year,
-        userId: anuncio.userId,
-        img: anuncio.img
-    }
-    return this.dataService.post<Anuncio>(endPoint, _anun);
-}
-
   public query(q: string): Observable<PaginatedAnuncios> {
     // Si coincide el tipo de datos que recibo con mi interfaz
     return this.dataService.query<any>('anuncios', {}).pipe(map(response => {
@@ -54,8 +41,8 @@ export class AnunciosService implements CrudAnuncios{
             userId: anuncio.userId,
             marca: anuncio.marca,
             modelo: anuncio.modelo,
-            year: new Date(anuncio.year),
             precio: anuncio.precio,
+            year: anuncio.year,
             img: anuncio.img
           };
         }),
@@ -74,8 +61,8 @@ export class AnunciosService implements CrudAnuncios{
             userId: anuncio.userId,
             marca: anuncio.marca,
             modelo: anuncio.modelo,
-            year: new Date(anuncio.year),
             precio: anuncio.precio,
+            year: anuncio.year,
             img: anuncio.img
           };
         }),
@@ -94,8 +81,8 @@ export class AnunciosService implements CrudAnuncios{
             userId: anuncio.userId,
             marca: anuncio.marca,
             modelo: anuncio.modelo,
-            year: new Date(anuncio.year),
             precio: anuncio.precio,
+            year: anuncio.year,
             img: anuncio.img
           };
         }),
@@ -103,16 +90,44 @@ export class AnunciosService implements CrudAnuncios{
       };
     }));
   }
-
-  public getAnuncio(id:number):Observable<Anuncio>{
+  
+  public getAnuncio(id:number): Observable<Anuncio> {
     return this.dataService.get<any>(this.mapping.getAnuncioUrl(id)).pipe(map(this.mapping.mapAnuncio.bind(this.mapping)));
   }
 
-  public updateAnuncio(anuncio:Anuncio):Observable<Anuncio>{
-    return this.dataService.put<any>(this.mapping.updateAnuncioUrl(anuncio.id!), anuncio).pipe(map(this.mapping.mapAnuncio.bind(this.mapping)));
+  public addAnuncio(anuncio: Anuncio): Observable<Anuncio> {
+    const apiUrl = "anuncios";
+    var _anun: any = {
+      userId: anuncio.userId,
+      marca: anuncio.marca,
+      modelo: anuncio.modelo,
+      precio: anuncio.precio,
+      year: anuncio.year,
+      img: anuncio.img
+    };
+    return this.dataService.post<Anuncio>(apiUrl, _anun).pipe(tap(_=>{
+      this.getAllUserAnuncios(anuncio.userId).subscribe();
+    }))
+  }
+  
+  public updateAnuncio(anuncio:Anuncio): Observable<Anuncio> {
+    const apiUrl = "anuncios";
+    var _anun: any = {
+      marca: anuncio.marca,
+      modelo: anuncio.modelo,
+      precio: anuncio.precio,
+      year: anuncio.year,
+      img: anuncio.img
+    };
+    return this.http.patch<Anuncio>(apiUrl, _anun).pipe(tap(_=>{
+      this.getAllUserAnuncios(anuncio.userId).subscribe();
+    }))
   }
 
-  public deleteAnuncio(anuncio:Anuncio):Observable<Anuncio>{
-    return this.dataService.delete<any>(this.mapping.deleteAnuncioUrl(anuncio.id!)).pipe(map(this.mapping.mapAnuncio.bind(this.mapping)));
+  public deleteAnuncio(anuncio:Anuncio): Observable<Anuncio> {
+    const apiUrl = "anuncios/" + anuncio.id;
+    return this.dataService.delete<Anuncio>(apiUrl).pipe(tap(_=> {
+      this.getAllUserAnuncios(anuncio.userId).subscribe();
+    }))
   }
 }

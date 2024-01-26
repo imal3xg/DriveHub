@@ -29,10 +29,11 @@ export class AnuncioFormComponent implements OnInit {
   ) { 
     this.form = this.formBuilder.group({
       id:[null],
+      userId:[this.anun?.userId],
       marca:['', [Validators.required]],
       modelo:['', [Validators.required]],
-      precio:[0, [Validators.required]],
-      year:[1-1-2020, [Validators.required]],
+      precio:[null, [Validators.required]],
+      year:[null, [Validators.required]],
       img:['']
     })
   }
@@ -46,8 +47,7 @@ export class AnuncioFormComponent implements OnInit {
   onSubmit() {
     if (this.form.valid) {
       // Aquí puedes manejar la lógica para guardar o actualizar el anuncio
-      const formData = this.form.value;
-      this._modal.dismiss(formData, 'ok');
+      this._modal.dismiss(this.form.value, 'ok');
     }
   }
 
@@ -55,5 +55,4 @@ export class AnuncioFormComponent implements OnInit {
     // Aquí puedes manejar la lógica para eliminar el anuncio
     this._modal.dismiss(this.form.value, 'delete');
   }
-
 }

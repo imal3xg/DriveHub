@@ -2,6 +2,10 @@ ion-router-outlet {
     margin-top: 60px;
 }
 
+ion-radio-group {
+    margin-top: 60px;
+}
+
 ion-list {
     background-color: #F4F5F8;
 }
@@ -12,3 +16,12 @@ ion-item {
     font-family: 'BEBAS', sans-serif;
     font-style: italic;
 }
+
+:root {
+    --ion-color-primary: #006600;
+    --ion-color-primary-rgb: 0, 102, 0;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255, 255, 255;
+    --ion-color-primary-shade: #005a00;
+    --ion-color-primary-tint: #1a751a;
+  }
