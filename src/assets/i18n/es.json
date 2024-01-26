@@ -31,7 +31,8 @@
         "marca": "Marca",
         "modelo": "Modelo",
         "precio": "Precio",
-        "year": "Año"
+        "year": "Año",
+        "desc": "Descripción"
     },
     "preguntas": {
         "title": "PREGUNTAS FRECUENTES",

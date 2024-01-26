@@ -1,9 +1,10 @@
 ion-card {
     flex-direction: column;
     overflow: hidden;
-    width: 400px;
+    width: 600px;
     height: auto;
-    border-radius: 15px;
+    border-radius: 20px;
+    margin: 20px;
 }
 
 /* Estilos para el efecto de neón */
@@ -31,10 +32,20 @@ ion-card {
   
 .titulo, .price {
     margin: 0;
+    margin-top: 20px;
     font-family: 'BEBAS', sans-serif;
+    font-size: xx-large;
+}
+
+.imagen {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(0, 0, 0);
 }
 
 ion-img {
-    width: fit-content;
+    display: flex;
+    justify-content: center!;
+    width: 50%;
     margin-bottom: 20px;
 }
