@@ -1,11 +1,11 @@
 <ion-app>
-  <ion-menu #menu contentId="main-content" class="menuuu">
+  <ion-menu #menu contentId="main-content" swipeGesture="false">
     <ion-header>
       <ion-toolbar color="dark">
         <ion-buttons slot="start">
           <ion-button (click)="menu.close()"><ion-icon slot="icon-only" color="danger" name="close-outline"></ion-icon></ion-button>
         </ion-buttons>
-          <img alt="logo of drivehub" src="../assets/imgs/logo_drivehub-removebg-preview.png" />
+          <img height="100px" alt="logo of drivehub" src="../assets/imgs/logo_drivehub-removebg-preview.png" />
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding" color="dark">
@@ -13,7 +13,7 @@
         <ion-item (click)="close(menu)" [routerLink]="['/home']" button detail="false"><ion-icon slot="start" color="danger" name="home-outline"></ion-icon>{{ 'menu.home' | translate }}</ion-item>
         <ion-item (click)="close(menu)" [routerLink]="['/perfil']" button detail="false"><ion-icon slot="start" color="danger" name="car-sport-outline"></ion-icon>{{ 'menu.profile' | translate }}</ion-item>
         <ion-item (click)="close(menu)" [routerLink]="['/preguntas']" button detail="false"><ion-icon slot="start" color="danger" name="help-outline"></ion-icon>{{ 'menu.preguntas' | translate }}</ion-item>
-        <ion-item (click)="close(menu)" [routerLink]="['/about']" button detail="false"><ion-icon slot="start" color="danger" name="information-circle-outline"></ion-icon>{{ 'menu.about' | translate }}</ion-item>
+        <ion-item (click)="close(menu)" [routerLink]="['/about']" button detail="false"><ion-in slot="start" color="danger" name="information-circle-outline"></ion-icon>{{ 'menu.about' | translate }}</ion-item>
         <ion-item (click)="onSignOut(menu)" button detail="false"><ion-icon slot="start" color="danger" name="log-out-outline"></ion-icon>{{'menu.signout' | translate }}</ion-item>
       </ion-list>
     </ion-content>
@@ -27,5 +27,4 @@
       (onSignout)="onSignOut(menu)"></app-header>
     <ion-router-outlet></ion-router-outlet>
   </div>
-  
 </ion-app>

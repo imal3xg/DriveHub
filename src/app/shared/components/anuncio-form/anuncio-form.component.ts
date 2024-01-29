@@ -39,7 +39,7 @@ export class AnuncioFormComponent implements OnInit {
   }
 
   ngOnInit() {}
-
+  
   onCancel() {
     this._modal.dismiss(null, 'cancel');
   }
