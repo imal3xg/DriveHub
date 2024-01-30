@@ -113,14 +113,14 @@ export class AnunciosService implements CrudAnuncios{
   public updateAnuncio(anuncio: Anuncio): Observable<Anuncio> {
     const apiUrl = "anuncios";
     var _anun: any = {
-      userId: anuncio.userId,
+      users_permissions_user: anuncio.userId,
       marca: anuncio.marca,
       modelo: anuncio.modelo,
       precio: anuncio.precio,
       year: anuncio.year,
       img: anuncio.img
     };
-    return this.http.patch<Anuncio>(apiUrl, _anun).pipe(tap(_=>{
+    return this.dataService.patch<Anuncio>(apiUrl, _anun).pipe(tap(_=>{
       this.getAllUserAnuncios(anuncio.userId).subscribe();
     }))
   }

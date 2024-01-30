@@ -13,6 +13,8 @@ export abstract class DataService{
 
   public abstract get<T>(resource:string):Observable<T>;
 
+  public abstract patch<T>(resource:string, data:any):Observable<T>;
+
   public abstract post<T>(resource:string, data:any):Observable<T>;
 
   public abstract put<T>(resource:string, data:any):Observable<T>;
