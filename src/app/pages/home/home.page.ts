@@ -77,75 +77,13 @@ export class HomePage implements OnInit {
   }
 
   public async onCardClicked(anun:Anuncio){
-    
     var onDismiss = (info:any)=>{
       console.log(info);
-      switch(info.role){
-        case 'ok':{
-          if(info.data.picture){
-            dataURLtoBlob(info.data.picture,(blob:Blob)=>{
-              this.media.upload(blob).subscribe((media:number[])=>{
-                info.data.picture = media[0];
-                let _anun = {id:anun.id, ...info.data};
-                this.anuns.updateAnuncio(_anun).subscribe(async anun=>{
-                  this.loadAnun();
-                  const options:ToastOptions = {
-                    message:"User modified",
-                    duration:1000,
-                    position:'bottom',
-                    color:'tertiary',
-                    cssClass:'card-ion-toast'
-                  };
-                  const toast = await this.toast.create(options);
-                  toast.present();
-                });
-              });
-            });
-          }
-          else{
-            if(info.data.picture=="")
-              info.data.picture = null;
-            this.anuns.updateAnuncio(info.data).subscribe(async anun=>{
-                this.loadAnun();
-                const options:ToastOptions = {
-                message:"Anuncio modified",
-                duration:1000,
-                position:'bottom',
-                color:'tertiary',
-                cssClass:'card-ion-toast'
-              };
-              const toast = await this.toast.create(options);
-              toast.present();
-            });
-          }
-        }
-        break;
-        case 'delete':{
-          this.anuns.deleteAnuncio(info.data).subscribe(async anun=>{
-            this.loadAnun();
-            const options:ToastOptions = {
-            message:"Anuncio deleted",
-            duration:1000,
-            position:'bottom',
-            color:'tertiary',
-            cssClass:'card-ion-toast'
-          };
-          const toast = await this.toast.create(options);
-          toast.present();
-        })
-        }
-        break;
-        default:{
-          console.error("No debería entrar");
-        }
-      }
     }
     this.presentForm(anun, onDismiss);
   }
-
   
   async presentForm(data:Anuncio|null, onDismiss:(result:any)=>void){
-    
     const modal = await this.modal.create({
       component:AnuncioDetailComponent,
       componentProps:{

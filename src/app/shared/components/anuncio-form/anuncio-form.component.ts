@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { Anuncio } from 'src/app/core/interfaces/anuncios';
+import { AuthService } from 'src/app/core/services/api/auth.service';
 
 @Component({
   selector: 'app-anuncio-form',
@@ -13,7 +14,6 @@ export class AnuncioFormComponent implements OnInit {
   form:FormGroup;
   @Input() set anun(_anun:Anuncio | null){
     if(_anun){
-      this.form.controls['id'].setValue(_anun.id);
       this.form.controls['marca'].setValue(_anun.marca);
       this.form.controls['modelo'].setValue(_anun.modelo);
       this.form.controls['precio'].setValue(_anun.precio);
@@ -24,12 +24,11 @@ export class AnuncioFormComponent implements OnInit {
   @Input() mode:'New'|'Edit' = 'New';
 
   constructor(
+    private auth:AuthService,
     private _modal:ModalController,
     private formBuilder:FormBuilder
   ) { 
     this.form = this.formBuilder.group({
-      id:[null],
-      userId:[this.anun?.userId],
       marca:['', [Validators.required]],
       modelo:['', [Validators.required]],
       precio:[null, [Validators.required]],

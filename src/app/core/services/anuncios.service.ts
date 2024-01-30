@@ -94,11 +94,11 @@ export class AnunciosService implements CrudAnuncios{
   public getAnuncio(id:number): Observable<Anuncio> {
     return this.dataService.get<any>(this.mapping.getAnuncioUrl(id)).pipe(map(this.mapping.mapAnuncio.bind(this.mapping)));
   }
-
+  
   public addAnuncio(anuncio: Anuncio): Observable<Anuncio> {
     const apiUrl = "anuncios";
     var _anun: any = {
-      userId: anuncio.userId,
+      users_permissions_user: anuncio.userId,
       marca: anuncio.marca,
       modelo: anuncio.modelo,
       precio: anuncio.precio,
@@ -110,9 +110,10 @@ export class AnunciosService implements CrudAnuncios{
     }))
   }
   
-  public updateAnuncio(anuncio:Anuncio): Observable<Anuncio> {
+  public updateAnuncio(anuncio: Anuncio): Observable<Anuncio> {
     const apiUrl = "anuncios";
     var _anun: any = {
+      userId: anuncio.userId,
       marca: anuncio.marca,
       modelo: anuncio.modelo,
       precio: anuncio.precio,
@@ -124,7 +125,7 @@ export class AnunciosService implements CrudAnuncios{
     }))
   }
 
-  public deleteAnuncio(anuncio:Anuncio): Observable<Anuncio> {
+  public deleteAnuncio(anuncio: Anuncio): Observable<Anuncio> {
     const apiUrl = "anuncios/" + anuncio.id;
     return this.dataService.delete<Anuncio>(apiUrl).pipe(tap(_=> {
       this.getAllUserAnuncios(anuncio.userId).subscribe();

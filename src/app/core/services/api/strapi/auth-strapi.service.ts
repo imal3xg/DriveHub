@@ -117,4 +117,10 @@ export class AuthStrapiService extends AuthService {
       });
     });
   }
+
+  public getUserId(): number | null{
+    if(this._user.value && this._user.value?.id)
+      return this._user.value.id;
+    return null;
+  }
 }
