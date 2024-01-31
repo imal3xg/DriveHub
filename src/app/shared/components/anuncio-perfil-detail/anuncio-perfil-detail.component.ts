@@ -1,10 +1,12 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 import { Anuncio } from 'src/app/core/interfaces/anuncios';
 import { AnuncioInfoComponent } from '../anuncio-info/anuncio-info.component';
 import { Router } from '@angular/router';
 import { AnuncioFormComponent } from '../anuncio-form/anuncio-form.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AnunciosService } from 'src/app/core/services/anuncios.service';
+import { AuthService } from 'src/app/core/services/api/auth.service';
 
 @Component({
   selector: 'app-anuncio-detail',
@@ -22,7 +24,10 @@ export class AnuncioPerfilDetailComponent implements OnInit {
 
   constructor(
     private _modal:ModalController,
-    private changeDetectorRef: ChangeDetectorRef
+    private changeDetectorRef: ChangeDetectorRef,
+    private toast:ToastController,
+    private misanuns:AnunciosService,
+    private auth: AuthService
   ) {}
 
   ngOnInit() {}
@@ -30,26 +35,53 @@ export class AnuncioPerfilDetailComponent implements OnInit {
   onCancel(){
     this._modal.dismiss(null, 'cancel');
   }
-
-  onEdit() {
-    this.presentEditModal(); // Presentar el modal de edición
-  }
-
-  async presentEditModal() {
+  
+  async presentEditModal(data:Anuncio|null, onDismiss: (result: any) => void) {
     const modal = await this._modal.create({
-      component: AnuncioFormComponent, // Usar el componente de formulario
+      component: AnuncioFormComponent,
       componentProps: {
         anun: this.anun, // Pasar el valor del formulario actual
         mode: 'Edit' // Indicar que el modo es de edición
+      },
+      cssClass:"modal-full-right-side"
+    });
+    modal.present();
+    modal.onDidDismiss().then(result => {
+      if (result && result.data) {
+        onDismiss(result);
       }
     });
-    modal.onDidDismiss().then(data => {
-      if (data.role === 'ok') {
-        // Aquí puedes manejar la lógica después de editar el anuncio
-        // Por ejemplo, actualizar los datos en la vista
-        this.anun = data.data;
-      }
+  }
+  
+  onEdit() {
+    // Verifica que this.anun y this.anun.id estén definidos
+    if (this.anun && this.anun.id) {
+      this.presentEditModal(this.anun, (result) => {
+        if (result && result.data) {
+          result.data['userId'] = this.auth.getUserId();
+          result.data['id'] = this.anun!.id; // Agrega el id del anuncio a los datos
+          this.misanuns.updateAnuncio(result.data).subscribe({
+            next: (response) => {
+              this.showToast('Anuncio editado exitosamente');
+            },
+            error: (err) => {
+              console.error('Error al editar el anuncio:', err);
+              this.showToast('Error al editar el anuncio');
+            },
+          });
+        }
+      });
+    } else {
+      console.error('El anuncio o su ID no están definidos.');
+    }
+  }
+  
+
+  private async showToast(message: string) {
+    const toast = await this.toast.create({
+      message,
+      duration: 2000,
     });
-    return await modal.present();
+    toast.present();
   }
 }

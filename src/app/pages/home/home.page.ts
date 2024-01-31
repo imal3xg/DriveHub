@@ -27,23 +27,16 @@ export class HomePage implements OnInit {
   public loading$ = this._loading.asObservable();
 
   constructor(
-    private router:Router,
-    private toast:ToastController,
     public auth:AuthService,
     public anuns:AnunciosService,
-    private media:MediaService,
     private modal:ModalController
-  ) {
-    
-  }
+  ) { }
 
   private loadAnun(page:number=0, refresher:any=null){
-  
     this.anuns.query("").subscribe({
       next:response=>{
         this._anuns.next(response.data);
         this._pagination.next(response.pagination);
-        
         if(refresher)refresher.complete();
       },
       error:err=>{
@@ -77,9 +70,7 @@ export class HomePage implements OnInit {
   }
 
   public async onCardClicked(anun:Anuncio){
-    var onDismiss = (info:any)=>{
-      console.log(info);
-    }
+    var onDismiss = (info:any)=>{}
     this.presentForm(anun, onDismiss);
   }
   

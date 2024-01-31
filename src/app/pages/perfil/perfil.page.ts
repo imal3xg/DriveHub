@@ -28,16 +28,11 @@ export class PerfilPage implements OnInit {
   private pagination$ = this._pagination.asObservable();
 
   constructor(
-    private router:Router,
     private toast:ToastController,
     public auth:AuthService,
-    private appComponent: AppComponent,
     public misanuns:AnunciosService,
-    private media:MediaService,
     private modal:ModalController,
-  ) {
-    
-  }
+  ) { }
 
   private loadMisanun(page:number=0, refresher:any=null){
     this.misanuns.query("").subscribe({

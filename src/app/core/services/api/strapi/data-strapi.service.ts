@@ -27,12 +27,6 @@ export class StrapiDataService extends DataService{
     }));
   }
 
-  public patch<T>(resource:string, data:any):Observable<T>{
-    return this.api.patch(`/${resource}`, {data:data} as Object).pipe(map((response:StrapiResponse<T>)=>{
-      return {id:response.data.id, ...response.data.attributes};
-    }));
-  }
-
   public post<T>(resource:string, data:any):Observable<T>{
     return this.api.post(`/${resource}`, {data:data} as Object).pipe(map((response:StrapiResponse<T>)=>{
       return {id:response.data.id, ...response.data.attributes};
