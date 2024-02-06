@@ -6,6 +6,7 @@ import { Observable, lastValueFrom, map } from 'rxjs';
 import { StrapiArrayResponse, StrapiExtendedUser, StrapiLoginPayload, StrapiLoginResponse, StrapiMe, StrapiRegisterPayload, StrapiRegisterResponse, StrapiUser, } from 'src/app/core/interfaces/strapi';
 import { UserRegisterInfo } from 'src/app/core/interfaces/user-register-info';
 import { User } from 'src/app/core/interfaces/user';
+import { Router } from '@angular/router';
 
 export class AuthStrapiService extends AuthService {
 
@@ -61,8 +62,8 @@ export class AuthStrapiService extends AuthService {
     }));
   }
 
-  register(info: UserRegisterInfo): Observable<User> {
-    return new Observable<User>((obs) => {
+  register(info: UserRegisterInfo): Observable<void> {
+    return new Observable<void>((obs) => {
       const _info: StrapiRegisterPayload = {
         email: info.email,
         username: info.username,
@@ -70,19 +71,22 @@ export class AuthStrapiService extends AuthService {
       };
       this.apiSvc.post('/auth/local/register', _info).subscribe({
         next: async (data: StrapiRegisterResponse) => {
-                    
+          let connected = data && data.jwt!='';
+          this._logged.next(connected);
           await lastValueFrom(this.jwtSvc.saveToken(data.jwt));
           const _extended_user:StrapiExtendedUser= {
             name: info.name,
             surname: info.surname,
+            username: info.username,
             users_permissions_user: data.user.id,
+            picture: undefined,
           }
           try {
-            await lastValueFrom(this.apiSvc.post('/users-extensions', {data:_extended_user}));
+            await lastValueFrom(this.apiSvc.post('/user-extensions', {data:_extended_user}));
             const user = await lastValueFrom(this.me());
             this._user.next(user);
             this._logged.next(true);
-            obs.next(user);
+            obs.next();
             obs.complete();  
           } catch (error) {
             obs.error(error);
@@ -103,7 +107,6 @@ export class AuthStrapiService extends AuthService {
           );
           let ret: User = {
             id: user.id,
-            users_permissions_user: extended_user.data[0].id,
             username: user.username,
             name: extended_user.data[0].attributes.name,
             surname: extended_user.data[0].attributes.surname,

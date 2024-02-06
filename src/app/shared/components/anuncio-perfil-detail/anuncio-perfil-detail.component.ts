@@ -40,8 +40,8 @@ export class AnuncioPerfilDetailComponent implements OnInit {
     const modal = await this._modal.create({
       component: AnuncioFormComponent,
       componentProps: {
-        anun: this.anun, // Pasar el valor del formulario actual
-        mode: 'Edit' // Indicar que el modo es de edición
+        anun: this.anun,
+        mode: 'Edit'
       },
       cssClass:"modal-full-right-side"
     });
@@ -54,12 +54,11 @@ export class AnuncioPerfilDetailComponent implements OnInit {
   }
   
   onEdit() {
-    // Verifica que this.anun y this.anun.id estén definidos
     if (this.anun && this.anun.id) {
       this.presentEditModal(this.anun, (result) => {
         if (result && result.data) {
           result.data['userId'] = this.auth.getUserId();
-          result.data['id'] = this.anun!.id; // Agrega el id del anuncio a los datos
+          result.data['id'] = this.anun!.id;
           this.misanuns.updateAnuncio(result.data).subscribe({
             next: (response) => {
               this.showToast('Anuncio editado exitosamente');
@@ -81,8 +80,7 @@ export class AnuncioPerfilDetailComponent implements OnInit {
       this.misanuns.deleteAnuncio(this.anun.id).subscribe({
         next: () => {
           this.showToast('Anuncio eliminado exitosamente');
-          // Puedes realizar cualquier acción adicional aquí después de eliminar el anuncio
-          this._modal.dismiss(null, 'delete'); // Cierra el modal después de eliminar
+          this._modal.dismiss(null, 'delete');
         },
         error: (err) => {
           console.error('Error al eliminar el anuncio:', err);

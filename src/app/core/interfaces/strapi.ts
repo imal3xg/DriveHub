@@ -35,7 +35,7 @@ export interface StrapiLoginPayload{
 export interface StrapiRegisterPayload{
   email:string,
   password:string,
-  username:string
+  username:string,
 }
 
 export interface StrapiLoginResponse{
@@ -50,6 +50,7 @@ export interface StrapiExtendedUser{
   name:string,
   surname:string,
   users_permissions_user:number,
+  username?:string,
   picture?:{
       data:StrapiData<StrapiMedia>
   }
@@ -58,88 +59,88 @@ export interface StrapiExtendedUser{
 export type StrapiUploadResponse = StrapiMedia[]
 
 export interface StrapiMedia {
-id: number
-name: string
-alternativeText: any
-caption: any
-width: number
-height: number
-formats: Formats
-hash: string
-ext: string
-mime: string
-size: number
-url: string
-previewUrl: any
-provider: string
-provider_metadata: ProviderMetadata
-createdAt: string
-updatedAt: string
+  id: number
+  name: string
+  alternativeText: any
+  caption: any
+  width: number
+  height: number
+  formats: Formats
+  hash: string
+  ext: string
+  mime: string
+  size: number
+  url: string
+  previewUrl: any
+  provider: string
+  provider_metadata: ProviderMetadata
+  createdAt: string
+  updatedAt: string
 }
 
 export interface Formats {
-large: Large
-small: Small
-medium: Medium
-thumbnail: Thumbnail
+  large: Large
+  small: Small
+  medium: Medium
+  thumbnail: Thumbnail
 }
 
 export interface Large {
-ext: string
-url: string
-hash: string
-mime: string
-name: string
-path: any
-size: number
-width: number
-height: number
-provider_metadata: ProviderMetadata
+  ext: string
+  url: string
+  hash: string
+  mime: string
+  name: string
+  path: any
+  size: number
+  width: number
+  height: number
+  provider_metadata: ProviderMetadata
 }
 
 
 export interface Small {
-ext: string
-url: string
-hash: string
-mime: string
-name: string
-path: any
-size: number
-width: number
-height: number
-provider_metadata: ProviderMetadata
+  ext: string
+  url: string
+  hash: string
+  mime: string
+  name: string
+  path: any
+  size: number
+  width: number
+  height: number
+  provider_metadata: ProviderMetadata
 }
 
 
 
 export interface Medium {
-ext: string
-url: string
-hash: string
-mime: string
-name: string
-path: any
-size: number
-width: number
-height: number
-provider_metadata: ProviderMetadata
+  ext: string
+  url: string
+  hash: string
+  mime: string
+  name: string
+  path: any
+  size: number
+  width: number
+  height: number
+  provider_metadata: ProviderMetadata
 }
 
 export interface Thumbnail {
-ext: string
-url: string
-hash: string
-mime: string
-name: string
-path: any
-size: number
-width: number
-height: number
-provider_metadata: ProviderMetadata
+  ext: string
+  url: string
+  hash: string
+  mime: string
+  name: string
+  path: any
+  size: number
+  width: number
+  height: number
+  provider_metadata: ProviderMetadata
 }
 
 export interface ProviderMetadata {
-public_id: string
-resource_type: string
+  public_id: string
+  resource_type: string
 }

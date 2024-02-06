@@ -9,7 +9,10 @@ import { AuthService } from 'src/app/core/services/api/auth.service';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(
+    private auth: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit() {}
 

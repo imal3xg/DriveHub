@@ -1,17 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { ModalController, ToastController, ToastOptions } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { Pagination } from 'src/app/core/interfaces/data';
-import { User } from 'src/app/core/interfaces/user';
 import { AuthService } from 'src/app/core/services/api/auth.service';
-import { MediaService } from 'src/app/core/services/api/media.service';
-import { dataURLtoBlob } from 'src/app/core/helpers/blob';
-import { MisanuncioDetailComponent } from 'src/app/shared/components/misanuncio-detail/misanuncio-detail.component';
-import { AppComponent } from 'src/app/app.component';
 import { AnunciosService } from 'src/app/core/services/anuncios.service';
 import { Anuncio } from 'src/app/core/interfaces/anuncios';
-import { AnuncioDetailComponent } from 'src/app/shared/components/anuncio-detail/anuncio-detail.component';
 import { AnuncioPerfilDetailComponent } from 'src/app/shared/components/anuncio-perfil-detail/anuncio-perfil-detail.component';
 import { AnuncioFormComponent } from 'src/app/shared/components/anuncio-form/anuncio-form.component';
 

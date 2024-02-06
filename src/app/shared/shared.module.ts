@@ -13,8 +13,6 @@ import { AnuncioInfoComponent } from './components/anuncio-info/anuncio-info.com
 import { AnuncioDetailComponent } from './components/anuncio-detail/anuncio-detail.component';
 import { AnuncioPerfilDetailComponent } from './components/anuncio-perfil-detail/anuncio-perfil-detail.component';
 import { AnuncioItemComponent } from './components/anuncio-item/anuncio-item.component';
-import { MisanuncioInfoComponent } from './components/misanuncio-info/misanuncio-info.component';
-import { MisanuncioDetailComponent } from './components/misanuncio-detail/misanuncio-detail.component';
 import { ImgSelectableComponent } from './components/img-selectable/img-selectable.component';
 import { TransformDatePipe } from './pipes/transform-date.pipe';
 import { AboutDetailComponent } from './components/about-detail/about-detail.component';
@@ -32,8 +30,6 @@ import { AnuncioFormComponent } from './components/anuncio-form/anuncio-form.com
     AnuncioInfoComponent,
     AnuncioPerfilDetailComponent,
     AnuncioDetailComponent,
-    MisanuncioInfoComponent,
-    MisanuncioDetailComponent,
     ImgSelectableComponent,
     HeaderComponent,
     AboutDetailComponent,
@@ -64,8 +60,6 @@ import { AnuncioFormComponent } from './components/anuncio-form/anuncio-form.com
     AnuncioInfoComponent,
     AnuncioDetailComponent,
     AnuncioPerfilDetailComponent,
-    MisanuncioInfoComponent,
-    MisanuncioDetailComponent,
     ImgSelectableComponent,
     AboutDetailComponent,
     HeaderComponent,

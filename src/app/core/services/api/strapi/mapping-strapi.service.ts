@@ -52,7 +52,6 @@ export class MappingStrapiService extends MappingService{
       id:data.id,
       name:data.name,
       surname:data.surname,
-      users_permissions_user:data.users_permissions_user,
       picture:data.picture?.data?{
         id: data.picture.data.id,
         url_large: data.picture.data.attributes.formats.large?.url,

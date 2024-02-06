@@ -21,7 +21,7 @@ export abstract class AuthService {
   
   public abstract login(credentials:Object):Observable<User>;
 
-  public abstract register(info:Object):Observable<User>;
+  public abstract register(info:Object):Observable<void>;
 
   public abstract logout():Observable<void>;
 
