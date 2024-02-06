@@ -15,7 +15,7 @@ interface CrudAnuncios {
   getAllAnuncios(userId: number): Observable<PaginatedAnuncios>;
   addAnuncio(anun: Anuncio): Observable<Anuncio>;
   updateAnuncio(anun: Anuncio): Observable<Anuncio>;
-  deleteAnuncio(anun: Anuncio): Observable<Anuncio>;
+  deleteAnuncio(anuncioId: number): Observable<void>;
 }
 
 @Injectable({
@@ -118,7 +118,7 @@ export class AnunciosService implements CrudAnuncios{
     const anuncioId = this.getAnuncioId(anuncio);
     if (!anuncioId) {
       console.error('El anuncio no tiene un ID válido.');
-      return EMPTY; // O puedes manejar el error de otra manera
+      return EMPTY;
     }
     var _anun: any = {
       users_permissions_user: anuncio.userId,
@@ -135,16 +135,26 @@ export class AnunciosService implements CrudAnuncios{
       }),
       catchError(error => {
         console.error('Error al actualizar el anuncio:', error);
-        // Agrega aquí la lógica para manejar el error
         return throwError(error);
       })
     );
   }  
 
-  public deleteAnuncio(anuncio: Anuncio): Observable<Anuncio> {
-    const apiUrl = "anuncios/" + anuncio.id;
-    return this.dataService.delete<Anuncio>(apiUrl).pipe(tap(_=> {
-      this.getAllUserAnuncios(anuncio.userId).subscribe();
-    }))
+  public deleteAnuncio(anuncioId: number): Observable<void> {
+    if (!anuncioId) {
+      console.error('El ID del anuncio no es válido.');
+      return EMPTY;
+    }
+    const apiUrl = `anuncios/${anuncioId}`;
+    return this.dataService.delete<void>(apiUrl).pipe(
+      tap(_ => {
+        console.log('Anuncio eliminado con éxito.');
+        // Aquí puedes realizar cualquier acción adicional después de eliminar el anuncio
+      }),
+      catchError(error => {
+        console.error('Error al eliminar el anuncio:', error);
+        return throwError(error);
+      })
+    );
   }
 }

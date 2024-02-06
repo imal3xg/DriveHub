@@ -1,18 +1,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button color="primary" fill="clear" (click)="onCancel()">
+      <ion-button color="danger" fill="clear" (click)="onCancel()">
         <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title>
       {{(mode=='New'?('anunciodetail.create' | translate):('anunciodetail.edit' | translate))}}
     </ion-title>
-    <ion-buttons slot="end">
-      <ion-button *ngIf="mode=='Edit'" color="primary" fill="clear" (click)="onDelete()">
-        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

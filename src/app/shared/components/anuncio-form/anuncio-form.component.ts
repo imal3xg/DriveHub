@@ -24,9 +24,8 @@ export class AnuncioFormComponent implements OnInit {
   @Input() mode:'New'|'Edit' = 'New';
 
   constructor(
-    private auth:AuthService,
     private _modal:ModalController,
-    private formBuilder:FormBuilder
+    private formBuilder:FormBuilder,
   ) { 
     this.form = this.formBuilder.group({
       marca:['', [Validators.required]],
@@ -45,13 +44,7 @@ export class AnuncioFormComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      // Aquí puedes manejar la lógica para guardar o actualizar el anuncio
       this._modal.dismiss(this.form.value, 'ok');
     }
-  }
-
-  onDelete() {
-    // Aquí puedes manejar la lógica para eliminar el anuncio
-    this._modal.dismiss(this.form.value, 'delete');
   }
 }

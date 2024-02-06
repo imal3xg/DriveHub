@@ -75,7 +75,24 @@ export class AnuncioPerfilDetailComponent implements OnInit {
       console.error('El anuncio o su ID no están definidos.');
     }
   }
-  
+
+  onDelete() {
+    if (this.anun && this.anun.id) {
+      this.misanuns.deleteAnuncio(this.anun.id).subscribe({
+        next: () => {
+          this.showToast('Anuncio eliminado exitosamente');
+          // Puedes realizar cualquier acción adicional aquí después de eliminar el anuncio
+          this._modal.dismiss(null, 'delete'); // Cierra el modal después de eliminar
+        },
+        error: (err) => {
+          console.error('Error al eliminar el anuncio:', err);
+          this.showToast('Error al eliminar el anuncio');
+        },
+      });
+    } else {
+      console.error('El anuncio o su ID no están definidos.');
+    }
+  }
 
   private async showToast(message: string) {
     const toast = await this.toast.create({

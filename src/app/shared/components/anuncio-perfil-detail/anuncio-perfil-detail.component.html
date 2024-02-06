@@ -1,13 +1,16 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button color="primary" fill="clear" (click)="onCancel()">
+      <ion-button color="danger" fill="clear" (click)="onCancel()">
         <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button color="primary" fill="clear" (click)="onEdit()">
+      <ion-button color="danger" fill="clear" (click)="onEdit()">
         <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+      </ion-button>
+      <ion-button color="danger" fill="clear" (click)="onDelete()">
+        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
