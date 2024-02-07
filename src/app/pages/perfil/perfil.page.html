@@ -4,10 +4,13 @@
     <ion-button slot="end" fill="outline" color="dark" aria-label="New Anuncio" (click)="onNewAnuncio()" class="ok">
       <ion-icon slot="icon-only" color="danger"  name="add-outline" aria-hidden="true"></ion-icon>
     </ion-button>
+    <ion-button slot="end" fill="outline" color="dark" (click)="reloadApp()">
+      <ion-icon slot="icon-only" color="danger" name="sync-outline" aria-hidden="true"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="offset-header" [fullscreen]="false">
+<ion-content class="offset-header content" [fullscreen]="false">
   <div class="anun-panel">
     <app-anuncio-info 
       *ngFor="let anun of anuns$ | async" 

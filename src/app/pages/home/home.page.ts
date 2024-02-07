@@ -5,8 +5,6 @@ import { BehaviorSubject, zip } from 'rxjs';
 import { ModalController, ToastController, ToastOptions } from '@ionic/angular';
 import { AnunciosService } from 'src/app/core/services/anuncios.service';
 import { Pagination } from 'src/app/core/interfaces/data';
-import { dataURLtoBlob } from 'src/app/core/helpers/blob';
-import { MediaService } from 'src/app/core/services/api/media.service';
 import { AuthService } from 'src/app/core/services/api/auth.service';
 import { AnuncioDetailComponent } from 'src/app/shared/components/anuncio-detail/anuncio-detail.component';
 
@@ -23,27 +21,32 @@ export class HomePage implements OnInit {
   public _pagination = new BehaviorSubject<Pagination>({page:0, pageSize:0, pageCount:0, total:0});
   private pagination$ = this._pagination.asObservable();
 
-  private _loading = new BehaviorSubject<boolean>(false);
-  public loading$ = this._loading.asObservable();
-
   constructor(
     public auth:AuthService,
     public anuns:AnunciosService,
     private modal:ModalController
   ) { }
 
-  private loadAnun(page:number=0, refresher:any=null){
+  private loadAnun(page: number = 0, refresher: any = null) {
     this.anuns.query("").subscribe({
-      next:response=>{
+      next: response => {
         this._anuns.next(response.data);
         this._pagination.next(response.pagination);
-        if(refresher)refresher.complete();
+        if (refresher) refresher.target.complete();
+        setTimeout(() => {
+          location.reload(); // Recargamos la página después de cargar los datos
+        });
       },
-      error:err=>{
+      error: err => {
         console.log(err);
+        if (refresher) refresher.target.complete();
+        setTimeout(() => {
+          location.reload(); // Recargamos la página en caso de error
+        });
       }
     });
   }
+  
 
   ngOnInit(): void {
     this.auth.user$.subscribe(user=> {
@@ -51,6 +54,14 @@ export class HomePage implements OnInit {
         this.getAnuncios(user.id);
       }
     })
+  }
+
+  ionViewWillEnter() {
+    this.auth.user$.subscribe(user => {
+      if (user?.id) {
+        this.getAnuncios(user.id);
+      }
+    });
   }
 
   private getAnuncios(userId: number) {

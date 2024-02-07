@@ -4,10 +4,11 @@ ion-title{
   font-size: x-large;
 }
 
-.filter{
-  position: relative;
+.custom-background {
+  background-image: url('../../../assets/imgs/pexels-juan-pablo-serrano-arenas-792815.jpg');
+  background-size: cover;
+  background-position: center;
 }
-
 
 .anun-panel{
   display: flex;

@@ -21,28 +21,35 @@ export class PerfilPage implements OnInit {
   private pagination$ = this._pagination.asObservable();
 
   constructor(
-    private toast:ToastController,
-    public auth:AuthService,
-    public misanuns:AnunciosService,
-    private modal:ModalController,
+    private toast: ToastController,
+    public auth: AuthService,
+    public misanuns: AnunciosService,
+    private modal: ModalController,
   ) { }
 
-  private loadMisanun(page:number=0, refresher:any=null){
+  private loadMisanun(page: number = 0, refresher: any = null) {
     this.misanuns.query("").subscribe({
-      next:response=>{
+      next: response => {
         this._misanuns.next(response.data);
         this._pagination.next(response.pagination);
-        if(refresher)refresher.complete();
+        if (refresher) refresher.complete();
+        setTimeout(() => {
+          location.reload();
+        });
       },
-      error:err=>{
+      error: err => {
         console.log(err);
+        if (refresher) refresher.complete();
+        setTimeout(() => {
+          location.reload();
+        });
       }
     });
   }
 
   ngOnInit(): void {
-    this.auth.user$.subscribe(user=> {
-      if (user?.id){
+    this.auth.user$.subscribe(user => {
+      if (user?.id) {
         this.getAnuncios(user.id);
       }
     })
@@ -50,58 +57,64 @@ export class PerfilPage implements OnInit {
 
   private getAnuncios(userId: number) {
     this.misanuns.getAllUserAnuncios(userId).subscribe({
-      next:response => {
+      next: response => {
         this._misanuns.next(response.data);
         this._pagination.next(response.pagination);
       },
-      error:err => {
-         console.log('Error al obtener los anuncios:', err);
+      error: err => {
+        console.log('Error al obtener los anuncios:', err);
       }
-    });   
+    });
   }
 
-  doRefresh(event:any){
+  reloadApp() {
+    location.reload();
+  }
+
+  doRefresh(event: any) {
     this.loadMisanun(0, event.target);
   }
 
-  public async onCardClicked(misanun:Anuncio){
-    var onDismiss = (info:any)=>{}
+  public async onCardClicked(misanun: Anuncio) {
+    var onDismiss = (info: any) => { }
     this.presentForm(misanun, onDismiss);
   }
 
-  async presentForm(data:Anuncio|null, onDismiss:(result:any)=>void){
+  async presentForm(data: Anuncio | null, onDismiss: (result: any) => void) {
     const modal = await this.modal.create({
-      component:AnuncioPerfilDetailComponent,
-      componentProps:{
-        anun:data
+      component: AnuncioPerfilDetailComponent,
+      componentProps: {
+        anun: data
       },
-      cssClass:"modal-full-right-side"
+      cssClass: "modal-full-right-side"
     });
     modal.present();
-    modal.onDidDismiss().then(result=>{
-      if(result && result.data){
+    modal.onDidDismiss().then(result => {
+      if (result && result.data) {
         onDismiss(result);
+        this.loadMisanun(0, event?.target);
       }
     });
   }
 
-  async presentFormToAdd(data:Anuncio|null, onDismiss:(result:any)=>void){
+  async presentFormToAdd(data: Anuncio | null, onDismiss: (result: any) => void) {
     const modal = await this.modal.create({
-      component:AnuncioFormComponent,
-      componentProps:{
-        anun:data
+      component: AnuncioFormComponent,
+      componentProps: {
+        anun: data
       },
-      cssClass:"modal-full-right-side"
+      cssClass: "modal-full-right-side"
     });
     modal.present();
-    modal.onDidDismiss().then(result=>{
-      if(result && result.data){
+    modal.onDidDismiss().then(result => {
+      if (result && result.data) {
         onDismiss(result);
+        this.loadMisanun(0, event?.target);
       }
     });
   }
 
-  onNewAnuncio(){
+  onNewAnuncio() {
     this.presentFormToAdd(null, (result) => {
       if (result && result.data) {
         result.data['userId'] = this.auth.getUserId();
@@ -109,6 +122,8 @@ export class PerfilPage implements OnInit {
           next: (response) => {
             // Muestra un mensaje de éxito o realiza acciones adicionales
             this.showToast('Anuncio creado exitosamente');
+            this.loadMisanun(0, event?.target);
+
           },
           error: (err) => {
             console.error('Error al crear el anuncio:', err);
@@ -119,7 +134,7 @@ export class PerfilPage implements OnInit {
       }
     });
   }
-  
+
   private async showToast(message: string) {
     const toast = await this.toast.create({
       message,
