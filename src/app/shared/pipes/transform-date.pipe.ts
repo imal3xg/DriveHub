@@ -11,6 +11,12 @@ export class TransformDatePipe implements PipeTransform {
     if (value instanceof Date) {
       const datePipe = new DatePipe('en-US');
       return datePipe.transform(value, 'yyyy'); // 'yyyy' devuelve solo el año
+    } else if (typeof value === 'string') {
+      // Assuming value is a string representing a year
+      const year = parseInt(value, 10);
+      if (!isNaN(year)) {
+        return year;
+      }
     }
     return value;
   }
