@@ -18,7 +18,7 @@
       <ion-icon slot="icon-only" size="large" color="danger" name="arrow-down-outline"></ion-icon>
     </div>
     <app-img-selectable></app-img-selectable>
-    <ion-img *ngIf="anun && anun.img" alt="Silhouette of a person's head" [src]="anun.img.url_medium"></ion-img>
+    <ion-img *ngIf="anun && anun.imgs" alt="Silhouette of a person's head" [src]="anun.imgs.data.attributes.formats.medium"></ion-img>
     <ion-item fill="outline">
       <ion-input label="{{('anunciodetail.marca' | translate)}}:" labelPlacement="start" formControlName="marca" type="text"></ion-input>
     </ion-item>

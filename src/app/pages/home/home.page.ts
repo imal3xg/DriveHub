@@ -66,7 +66,7 @@ export class HomePage implements OnInit {
 
   // Método para obtener los anuncios de un usuario dado su ID
   private getAnuncios(userId: number) {
-    this.anuns.getAllAnuncios(userId).subscribe({
+    this.anuns.getAllAnuncios().subscribe({
       next: response => {
         // Actualizar la lista de anuncios y la paginación con la respuesta del servicio
         this._anuns.next(response.data);

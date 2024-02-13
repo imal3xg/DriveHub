@@ -10,7 +10,7 @@ export interface Anuncio {
     modelo: String,
     year: Date,
     precio: number,
-    img?: Media|null,
+    imgs?: Media|null,
     userId: number,
 }
 

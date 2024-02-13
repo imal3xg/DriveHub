@@ -1,7 +1,17 @@
-export interface Media{
-    id:number,
-    url_small:string,
-    url_medium:string,
-    url_large:string,
-    url_thumbnail:string
+export interface Media {
+    data: {
+        id: number;
+        attributes: {
+            formats: {
+                large: FormatoImagen;
+                small: FormatoImagen;
+                medium: FormatoImagen;
+                thumbnail: FormatoImagen;
+            };
+        };
+    };
+}
+
+interface FormatoImagen {
+    url: string;
 }

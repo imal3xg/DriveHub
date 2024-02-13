@@ -35,13 +35,13 @@ export class MappingStrapiService extends MappingService{
               name:user.name,
               surname:user.surname,
               users_permissions_user: user.users_permissions_user,
-              picture:user.picture?.data?{
+              /*picture:user.picture?.data?{
                 id: user.picture.data.id,
                 url_large: user.picture.data.attributes.formats.large?.url,
                 url_small: user.picture.data.attributes.formats.small?.url,
                 url_medium:user.picture.data.attributes.formats.medium?.url,
                 url_thumbnail:user.picture.data.attributes.formats.thumbnail?.url,
-              }:null
+              }:null*/
             };
           }),
           pagination:data.pagination
@@ -52,13 +52,13 @@ export class MappingStrapiService extends MappingService{
       id:data.id,
       name:data.name,
       surname:data.surname,
-      picture:data.picture?.data?{
+      /*picture:data.picture?.data?{
         id: data.picture.data.id,
         url_large: data.picture.data.attributes.formats.large?.url,
         url_small: data.picture.data.attributes.formats.small?.url,
         url_medium:data.picture.data.attributes.formats.medium?.url,
         url_thumbnail:data.picture.data.attributes.formats.thumbnail?.url,
-      }:null
+      }:null*/
     };
   }
 }
