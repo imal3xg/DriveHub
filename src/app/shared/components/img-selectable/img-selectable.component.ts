@@ -21,6 +21,7 @@ export class ImgSelectableComponent  implements OnInit, ControlValueAccessor, On
   public picture$ = this._picture.asObservable();
   isDisabled:boolean = false;
   hasValue:boolean = false;
+  
   constructor(
     private pictureModal:ModalController
   ) { }

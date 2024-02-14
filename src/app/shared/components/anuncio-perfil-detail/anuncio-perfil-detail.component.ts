@@ -62,9 +62,11 @@ export class AnuncioPerfilDetailComponent implements OnInit {
           // Agregar el ID del usuario al anuncio editado
           result.data['userId'] = this.auth.getUserId();
           result.data['id'] = this.anun!.id;
+          result.data['imgs'] = this.anun?.imgs?.data
           // Llamar al servicio para actualizar el anuncio
           this.misanuns.updateAnuncio(result.data).subscribe({
             next: (response) => {
+
               // Mostrar un mensaje de éxito
               this.showToast('Anuncio editado exitosamente');
               // Recargar la página

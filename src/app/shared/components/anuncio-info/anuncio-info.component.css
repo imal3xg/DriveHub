@@ -7,7 +7,6 @@ ion-card {
     margin: 20px;
 }
 
-/* Estilos para el efecto de neón */
 .neon-border {
     position: relative;
 }
@@ -23,13 +22,12 @@ ion-card {
     opacity: 1; /* Establece la opacidad a 1 para que esté siempre presente */
 }
 
-
 .contenedor {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-  
+
 .titulo, .price {
     margin: 0;
     margin-top: 20px;
@@ -46,6 +44,6 @@ ion-card {
 ion-img {
     display: flex;
     justify-content: center!;
-    width: 50%;
-    margin-bottom: 20px;
+    width: 100%; /* Establece el ancho al 100% */
+    height: 100%; /* Establece la altura al 100% */
 }

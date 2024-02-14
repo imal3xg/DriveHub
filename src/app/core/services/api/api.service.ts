@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 import { HttpClientProvider } from '../http/http-client.provider';
 import { JwtService } from '../jwt.service';
 import { User } from '../../interfaces/user';

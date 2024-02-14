@@ -1,8 +1,8 @@
 <ion-card button (click)="onCardClick()" class="neon-border">
   <ion-card-content>
     <div class="imagen">
-      <ion-img *ngIf="!anun || !anun.imgs" alt="Silhouette of a person's head" src="./../../../../assets/imgs/giphy.gif"></ion-img>
-      <ion-img *ngIf="anun && anun.imgs" alt="Silhouette of a person's head" [src]="anun.imgs.data.attributes.formats.medium"></ion-img>
+      <ion-img *ngIf="!anun || !anun.imgs" alt="Silhouette of a person's head" src="assets/imgs/giphy.gif"></ion-img>
+      <ion-img *ngIf="anun && anun.imgs" alt="Silhouette of a person's head" [src]="anun.imgs"></ion-img>
     </div>
     <div class="contenedor">
       <h1 class="titulo">{{anun.marca}} {{anun.modelo}}</h1>

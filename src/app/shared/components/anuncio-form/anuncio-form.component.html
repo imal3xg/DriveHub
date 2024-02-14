@@ -17,8 +17,7 @@
       <div class="tex" slot="start">Pulsa aquí para seleccionar imagen           </div>
       <ion-icon slot="icon-only" size="large" color="danger" name="arrow-down-outline"></ion-icon>
     </div>
-    <app-img-selectable></app-img-selectable>
-    <ion-img *ngIf="anun && anun.imgs" alt="Silhouette of a person's head" [src]="anun.imgs.data.attributes.formats.medium"></ion-img>
+    <app-img-selectable formControlName="imgs"></app-img-selectable>
     <ion-item fill="outline">
       <ion-input label="{{('anunciodetail.marca' | translate)}}:" labelPlacement="start" formControlName="marca" type="text"></ion-input>
     </ion-item>

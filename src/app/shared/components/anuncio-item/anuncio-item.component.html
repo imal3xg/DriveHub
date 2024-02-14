@@ -1,7 +1,7 @@
 <ion-item [button]="true" (click)="onAnuncioClicked()">
   <ion-avatar slot="start">
-    <img *ngIf="!anun?.imgs" alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-    <img *ngIf="anun && anun?.imgs" alt="Silhouette of a person's head" [src]="anun.imgs" />
+    <ion-img *ngIf="!anun || !anun.imgs" alt="Silhouette of a person's head" src="assets/imgs/giphy.gif"></ion-img>
+    <ion-img *ngIf="anun && anun.imgs" alt="Silhouette of a person's head" [src]="anun.imgs"></ion-img>
   </ion-avatar>
   <ion-label>{{anun?.marca}} {{anun?.modelo}}</ion-label>
 </ion-item>

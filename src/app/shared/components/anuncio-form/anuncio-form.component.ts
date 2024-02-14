@@ -18,7 +18,7 @@ export class AnuncioFormComponent implements OnInit {
       this.form.controls['modelo'].setValue(_anun.modelo);
       this.form.controls['precio'].setValue(_anun.precio);
       this.form.controls['year'].setValue(_anun.year);
-      this.form.controls['img'].setValue(_anun?.imgs?.data.attributes.formats.medium);
+      this.form.controls['imgs'].setValue(_anun.imgs);
     }
   }
   @Input() mode:'New'|'Edit' = 'New';
@@ -32,7 +32,7 @@ export class AnuncioFormComponent implements OnInit {
       modelo:['', [Validators.required]],
       precio:[null, [Validators.required]],
       year:[null, [Validators.required]],
-      img:['']
+      imgs:['', [Validators.required]]
     })
   }
 

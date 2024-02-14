@@ -31,7 +31,8 @@ export class AnunciosService implements CrudAnuncios {
 
   public query(q: string): Observable<PaginatedAnuncios> {
     // Si coincide el tipo de datos que recibo con mi interfaz
-    return this.dataService.query<any>('anuncios?populate=imgs', {}).pipe(map(response => {
+    const apiUrl = "anuncios?populate=imgs";
+    return this.dataService.query<any>(apiUrl, {}).pipe(map(response => {
       return {
         data: response.data.map(anuncio => {
           return {
@@ -41,13 +42,7 @@ export class AnunciosService implements CrudAnuncios {
             modelo: anuncio.modelo,
             precio: anuncio.precio,
             year: anuncio.year,
-            img: anuncio.imgs?.data ? {
-              id: anuncio.imgs.data.id,
-              url_large: anuncio.imgs.data.attributes.formats.large.url,
-              url_small: anuncio.imgs.data.attributes.formats.small.url,
-              url_medium: anuncio.imgs.data.attributes.formats.medium.url,
-              url_thumbnail: anuncio.imgs.data.attributes.formats.thumbnail.url,
-            } : null
+            imgs: anuncio.imgs ? anuncio.imgs.data.attributes.formats.medium.url:null
           };
         }),
         pagination: response.pagination
@@ -56,23 +51,10 @@ export class AnunciosService implements CrudAnuncios {
   }
 
   public getAllAnuncios(): Observable<PaginatedAnuncios> {
-    const apiUrl = "anuncios?populate=imgs";
+    const apiUrl = "anuncios?sort=publishedAt:desc&populate=imgs";
     return this.dataService.query<any>(apiUrl, {}).pipe(map(response => {
       return {
         data: response.data.map(anuncio => {
-          /* const imgs: Media | null = anuncio.imgs ? {
-            data: {
-              id: anuncio.imgs.data.id,
-              attributes: {
-                formats: {
-                  large: { url: anuncio.imgs.data.attributes.formats.large.url },
-                  small: { url: anuncio.imgs.data.attributes.formats.small.url },
-                  medium: { url: anuncio.imgs.data.attributes.formats.medium.url },
-                  thumbnail: { url: anuncio.imgs.data.attributes.formats.thumbnail.url }
-                }
-              }
-            }
-          } : null; */
           return {
             id: anuncio.id,
             userId: anuncio.userId,
@@ -80,19 +62,7 @@ export class AnunciosService implements CrudAnuncios {
             modelo: anuncio.modelo,
             precio: anuncio.precio,
             year: anuncio.year,
-/*            imgs: anuncio.imgs ? {
-              data: {
-                id: anuncio.imgs.data.id,
-                attributes: {
-                  formats: {
-                    large: { url: anuncio.imgs.data.attributes.formats.large.url },
-                    small: { url: anuncio.imgs.data.attributes.formats.small.url },
-                    medium: { url: anuncio.imgs.data.attributes.formats.medium.url },
-                    thumbnail: { url: anuncio.imgs.data.attributes.formats.thumbnail.url }
-                  }
-                }
-              }
-            } : null */
+            imgs: anuncio.imgs ? anuncio.imgs.data.attributes.formats.medium.url:null
           };
         }),
         pagination: response.pagination
@@ -101,7 +71,7 @@ export class AnunciosService implements CrudAnuncios {
   }
 
   public getAllUserAnuncios(userId: number): Observable < PaginatedAnuncios > {
-  const apiUrl = "anuncios?sort=publishedAt:desc&populate=users_permissions_user&filters[users_permissions_user]=" + userId;
+  const apiUrl = "anuncios?sort=publishedAt:desc&populate=imgs&filters[users_permissions_user]=" + userId;
   return this.dataService.query<any>(apiUrl, {}).pipe(map(response => {
     return {
       data: response.data.map(anuncio => {
@@ -112,7 +82,7 @@ export class AnunciosService implements CrudAnuncios {
           modelo: anuncio.modelo,
           precio: anuncio.precio,
           year: anuncio.year,
-          img: anuncio.imgs
+          imgs: anuncio.imgs ? anuncio.imgs.data.attributes.formats.medium.url:null
         };
       }),
       pagination: response.pagination
@@ -155,7 +125,7 @@ getAnuncioId(anuncio: Anuncio): number | null {
     modelo: anuncio.modelo,
     precio: anuncio.precio,
     year: anuncio.year,
-    img: anuncio.imgs
+    imgs: anuncio.imgs?.data.attributes.formats.medium.url
   };
   const apiUrl = `anuncios/${anuncioId}`;
   return this.dataService.put<Anuncio>(apiUrl, _anun).pipe(

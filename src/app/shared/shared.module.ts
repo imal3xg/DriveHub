@@ -18,9 +18,6 @@ import { TransformDatePipe } from './pipes/transform-date.pipe';
 import { AboutDetailComponent } from './components/about-detail/about-detail.component';
 import { AnuncioFormComponent } from './components/anuncio-form/anuncio-form.component';
 
-
-
-
 @NgModule({
   declarations: [
     LoginFormComponent,
