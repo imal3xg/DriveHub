@@ -7,6 +7,8 @@ import { AnunciosService } from 'src/app/core/services/anuncios.service';
 import { Anuncio } from 'src/app/core/interfaces/anuncios';
 import { AnuncioPerfilDetailComponent } from 'src/app/shared/components/anuncio-perfil-detail/anuncio-perfil-detail.component';
 import { AnuncioFormComponent } from 'src/app/shared/components/anuncio-form/anuncio-form.component';
+import { dataURLtoBlob } from 'src/app/core/helpers/blob';
+import { MediaService } from 'src/app/core/services/api/media.service';
 
 @Component({
   selector: 'app-perfil',
@@ -28,6 +30,7 @@ export class PerfilPage implements OnInit {
     public auth: AuthService,
     public misanuns: AnunciosService,
     private modal: ModalController,
+    private media: MediaService
   ) { }
 
   // Método para cargar los anuncios del usuario
@@ -138,19 +141,49 @@ export class PerfilPage implements OnInit {
         // Agregar el ID del usuario al anuncio creado
         result.data['userId'] = this.auth.getUserId();
         // Llamar al servicio para añadir el anuncio
-        this.misanuns.addAnuncio(result.data).subscribe({
-          next: (response) => {
-            // Mostrar un mensaje de éxito
-            this.showToast('Anuncio creado exitosamente');
-            // Recargar la página
-            location.reload();
-          },
-          error: (err) => {
-            console.error('Error al crear el anuncio:', err);
-            // Mostrar un mensaje de error
-            this.showToast('Error al crear el anuncio');
-          },
-        });
+        if (result.data.imgs) {
+          dataURLtoBlob(result.data.imgs, (blob: Blob)=>{
+            this.media.upload(blob).subscribe((media:any[])=>{
+              result.data.imgs = media[0];
+              for (const [key, value] of Object.entries(result.data)){
+                (result as any)[key]=value;
+              }
+              this.misanuns.addAnuncio(result.data).subscribe({
+                next: (response) => {
+                  // Mostrar un mensaje de éxito
+                  this.showToast('Anuncio creado exitosamente');
+                  // Recargar la página
+                  location.reload();
+                },
+                error: (err) => {
+                  console.error('Error al crear el anuncio:', err);
+                  // Mostrar un mensaje de error
+                  this.showToast('Error al crear el anuncio');
+                },
+              });
+            })
+          })
+        } else {
+          if (result.data.imgs =="") {
+            result.data.imgs = null;
+          }
+          for (const [key, value] of Object.entries(result.data)) {
+            (result as any)[key]=value;
+          }
+          this.misanuns.addAnuncio(result.data).subscribe({
+            next: (response) => {
+              // Mostrar un mensaje de éxito
+              this.showToast('Anuncio creado exitosamente');
+              // Recargar la página
+              location.reload();
+            },
+            error: (err) => {
+              console.error('Error al crear el anuncio:', err);
+              // Mostrar un mensaje de error
+              this.showToast('Error al crear el anuncio');
+            },
+          });
+        }
       }
     });
   }

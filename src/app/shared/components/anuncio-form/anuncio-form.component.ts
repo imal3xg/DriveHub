@@ -32,7 +32,7 @@ export class AnuncioFormComponent implements OnInit {
       modelo:['', [Validators.required]],
       precio:[null, [Validators.required]],
       year:[null, [Validators.required]],
-      imgs:['', [Validators.required]]
+      imgs:['']
     })
   }
 
