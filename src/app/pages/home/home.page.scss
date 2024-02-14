@@ -1,17 +1,12 @@
-ion-title{
+ion-title {
   font-family: 'BEBAS', sans-serif;
   font-style: italic;
   font-size: x-large;
 }
 
-.custom-background {
-  background-image: url('../../../assets/imgs/pexels-juan-pablo-serrano-arenas-792815.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
-.anun-panel{
+.anun-panel {
+  margin: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content:flex-start;
+  justify-content: left
 }

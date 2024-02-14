@@ -4,13 +4,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="offset-header custom-background" [fullscreen]="false">
+<ion-content [fullscreen]="true">
   <div class="anun-panel">
     <app-anuncio-info 
       *ngFor="let anun of anuns$ | async" 
       [anun]="anun" 
       (onCardClicked)="onCardClicked(anun)" 
-      >
+      class="anuncio-item">
     </app-anuncio-info>
   </div>
 </ion-content>

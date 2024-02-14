@@ -45,5 +45,6 @@ ion-img {
     display: flex;
     justify-content: center!;
     width: 100%; /* Establece el ancho al 100% */
-    height: 100%; /* Establece la altura al 100% */
+    height: 320px; /* Establece la altura al 100% */
+    object-fit: cover;
 }
