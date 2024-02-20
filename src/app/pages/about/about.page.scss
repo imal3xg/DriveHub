@@ -1,3 +1,9 @@
+ion-title {
+    font-family: 'BEBAS', sans-serif;
+    font-style: italic;
+    font-size: x-large;
+}
+
 img {
     width: 75px;
 }
@@ -10,6 +16,10 @@ img {
     width: 100vw;
 }
 
-ion-toolbar{
+ion-toolbar {
     font-family: 'BEBAS', sans-serif;
+}
+
+.content {
+    --background: url('../../../assets/imgs/carreras-automoviles-competicion-deportiva.jpg') no-repeat center center / cover;
 }

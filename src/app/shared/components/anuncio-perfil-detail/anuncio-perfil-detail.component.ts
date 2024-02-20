@@ -27,16 +27,16 @@ export class AnuncioPerfilDetailComponent implements OnInit {
     private misanuns: AnunciosService,
     private auth: AuthService,
     private media: MediaService
-  ) {}
+  ) { }
 
   // Método ngOnInit, se ejecuta cuando se inicia el componente
-  ngOnInit() {}
+  ngOnInit() { }
 
   // Método para cancelar la visualización del detalle del anuncio
   onCancel() {
     this._modal.dismiss(null, 'cancel');
   }
-  
+
   // Método para abrir el modal de edición del anuncio
   async presentEditModal(data: Anuncio | null, onDismiss: (result: any) => void) {
     const modal = await this._modal.create({
@@ -55,7 +55,7 @@ export class AnuncioPerfilDetailComponent implements OnInit {
       }
     });
   }
-  
+
   // Método para editar el anuncio
   onEdit() {
     if (this.anun && this.anun.id) {
@@ -66,18 +66,18 @@ export class AnuncioPerfilDetailComponent implements OnInit {
           result.data['userId'] = this.auth.getUserId();
           result.data['id'] = this.anun!.id;
           if (result.data.imgs) {
-            dataURLtoBlob(result.data.imgs, (blob: Blob)=>{
-              this.media.upload(blob).subscribe((media:any[])=>{
+            dataURLtoBlob(result.data.imgs, (blob: Blob) => {
+              this.media.upload(blob).subscribe((media: any[]) => {
                 result.data.imgs = media[0];
-                for (const [key, value] of Object.entries(result.data)){
-                  (this.anun as any)[key]=value;
+                for (const [key, value] of Object.entries(result.data)) {
+                  (this.anun as any)[key] = value;
                 }
                 this.misanuns.updateAnuncio(result.data).subscribe({
                   next: (response) => {
                     // Mostrar un mensaje de éxito
                     this.showToast('Anuncio editado exitosamente');
                     // Recargar la página
-                    location.reload();
+                    window.location.href = '/welcome?from=perfil';
                   },
                   error: (err) => {
                     console.error('Error al editar el anuncio:', err);
@@ -88,11 +88,11 @@ export class AnuncioPerfilDetailComponent implements OnInit {
               })
             })
           } else {
-            if (result.data.imgs =="") {
-              result.data.imgs = null;
+            if (result.data.imgs == "") {
+              result.data.imgs = 'assets/imgs/logoimg.png';
             }
             for (const [key, value] of Object.entries(result.data)) {
-              (this.anun as any)[key]=value;
+              (this.anun as any)[key] = value;
             }
             // Llamar al servicio para actualizar el anuncio
             this.misanuns.updateAnuncio(result.data).subscribe({
@@ -100,7 +100,7 @@ export class AnuncioPerfilDetailComponent implements OnInit {
                 // Mostrar un mensaje de éxito
                 this.showToast('Anuncio editado exitosamente');
                 // Recargar la página
-                location.reload();
+                window.location.href = '/welcome?from=perfil';
               },
               error: (err) => {
                 console.error('Error al editar el anuncio:', err);
@@ -127,7 +127,7 @@ export class AnuncioPerfilDetailComponent implements OnInit {
           // Cerrar el modal
           this._modal.dismiss(null, 'delete');
           // Recargar la página
-          location.reload();
+          window.location.href = '/welcome?from=perfil';
         },
         error: (err) => {
           console.error('Error al eliminar el anuncio:', err);

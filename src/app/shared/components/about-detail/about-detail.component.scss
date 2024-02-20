@@ -1,12 +1,37 @@
-ion-card {
+.card-header {
+    font-family: 'BEBAS', sans-serif;
+    font-style: italic;
+    font-size: xx-large;
+}
+
+.centered-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.card-content {
     margin: 20px;
     padding: 20px;
+    background-color: rgba(143, 143, 143, 0.7);
 }
 
-ion-icon {
-    padding-right: 10px;
+.git ion-icon {
+    opacity: 1;
+    color: black;
+    margin-right: 10px;
 }
 
-.card {
-    width: 50%;
+.git h4 {
+    opacity: 1;
+    color: black;
+}
+
+.lin ion-icon {
+    opacity: 1;
+    margin-right: 10px;
+}
+
+.lin h4 {
+    opacity: 1;
 }

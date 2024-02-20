@@ -13,30 +13,30 @@ export const PICTURE_SELECTABLE_VALUE_ACCESSOR: any = {
   selector: 'app-img-selectable',
   templateUrl: './img-selectable.component.html',
   styleUrls: ['./img-selectable.component.scss'],
-  providers:[PICTURE_SELECTABLE_VALUE_ACCESSOR]
+  providers: [PICTURE_SELECTABLE_VALUE_ACCESSOR]
 })
-export class ImgSelectableComponent  implements OnInit, ControlValueAccessor, OnDestroy {
+export class ImgSelectableComponent implements OnInit, ControlValueAccessor, OnDestroy {
 
   private _picture = new BehaviorSubject("");
   public picture$ = this._picture.asObservable();
-  isDisabled:boolean = false;
-  hasValue:boolean = false;
-  
+  isDisabled: boolean = false;
+  hasValue: boolean = false;
+
   constructor(
-    private pictureModal:ModalController
+    private pictureModal: ModalController
   ) { }
 
   ngOnDestroy(): void {
     this._picture.complete();
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   propagateChange = (obj: any) => {
   }
 
   writeValue(obj: any): void {
-    if(obj){
+    if (obj) {
       this.hasValue = true;
       this._picture.next(obj);
     }
@@ -53,22 +53,22 @@ export class ImgSelectableComponent  implements OnInit, ControlValueAccessor, On
     this.isDisabled = isDisabled;
   }
 
-  changePicture(img:string){
-    this.hasValue = img!='';
+  changePicture(img: string) {
+    this.hasValue = img != '';
     this._picture.next(img);
     this.propagateChange(img);
   }
 
-  onChangePicture(event:Event, fileLoader:HTMLInputElement){
+  onChangePicture(event: Event, fileLoader: HTMLInputElement) {
     event.stopPropagation();
-    fileLoader.onchange = ()=>{
-      if(fileLoader.files && fileLoader.files?.length>0){
+    fileLoader.onchange = () => {
+      if (fileLoader.files && fileLoader.files?.length > 0) {
         var file = fileLoader.files[0];
         var reader = new FileReader();
         reader.onload = () => {
           this.changePicture(reader.result as string);
         };
-        reader.onerror = (error) =>{
+        reader.onerror = (error) => {
           console.log(error);
         }
         reader.readAsDataURL(file);
@@ -77,13 +77,12 @@ export class ImgSelectableComponent  implements OnInit, ControlValueAccessor, On
     fileLoader.click();
   }
 
-  onDeletePicture(event:Event){
+  onDeletePicture(event: Event) {
     event.stopPropagation();
     this.changePicture('');
   }
 
-  close(){
+  close() {
     this.pictureModal?.dismiss();
   }
-
 }

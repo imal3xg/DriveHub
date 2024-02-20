@@ -1,15 +1,19 @@
-ion-title{
+ion-title {
   font-family: 'BEBAS', sans-serif;
   font-style: italic;
   font-size: x-large;
 }
 
-.filter{
+.filter {
   position: relative;
 }
 
-.anun-panel{
+.anun-panel {
   display: flex;
   flex-wrap: wrap;
-  justify-content:flex-start;
+  justify-content: space-evenly;
+}
+
+.content {
+  --background: url('../../../assets/imgs/1000_F_719828782_Z3Kk47QUxeCUpZTdMBHnWpu7LBfS7YmA-DwzpMUGWlm-transformed.jpeg') no-repeat center center / cover;
 }

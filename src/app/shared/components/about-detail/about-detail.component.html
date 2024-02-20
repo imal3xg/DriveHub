@@ -1,14 +1,18 @@
-<ion-card color="dark">
-  <ion-card-header>
-    <ion-card-title>{{'about.name' | translate}} {{'about.surname' | translate}}</ion-card-title>
+<ion-card color="dark" class="card-content">
+  <ion-card-header class="card-header">
+    <ion-card-title>
+      <h1>{{'about.name' | translate}} {{'about.surname' | translate}}</h1>
+    </ion-card-title>
   </ion-card-header>
-  <ion-card-content>{{'about.detail' | translate}}</ion-card-content>
-  <ion-button color="danger" href="https://github.com/Alexgg420" target="_blank">
-    <ion-icon name="logo-github" aria-label="GitHub"></ion-icon>
-    GitHub
-  </ion-button>
-  <ion-button color="danger" href="https://www.linkedin.com/in/alejandro-gir%C3%A1ldez-guerrero/" target="_blank">
-    <ion-icon name="logo-linkedin" aria-label="LinkedIn"></ion-icon>
-    LinkedIn
-  </ion-button>
+  <ion-card-content style="font-size: large;">{{'about.detail' | translate}}</ion-card-content>
+  <ion-buttons class="centered-buttons">
+    <ion-button class="git" slot="start" fill="clear" href="https://github.com/imal3xg" target="_blank">
+      <ion-icon name="logo-github" aria-label="GitHub" style="font-size: 2em;"></ion-icon>
+      <h4>GitHub</h4>
+    </ion-button>
+    <ion-button class="lin" slot="end" fill="clear" color="primary" href="https://www.linkedin.com/in/alejandro-gir%C3%A1ldez-guerrero/" target="_blank">
+      <ion-icon name="logo-linkedin" aria-label="LinkedIn" style="font-size: 2em;"></ion-icon>
+      <h4>LinkedIn</h4>
+    </ion-button>
+  </ion-buttons>
 </ion-card>

@@ -31,7 +31,7 @@ export class PreguntasPage {
       ],
       question2: '¿Cómo puedo crear, modificar, o eliminar un anuncio?',
       answer2: [
-        { answer: 'Dirígete al menu de la izquierda y redirígete a la página de ""Anunios Propios"". Eso sí, lamentamos que actualmente estas funciones no se encuentran disponibles en cuanto a su funcionalidad.' },
+        { answer: 'Dirígete al menu de la izquierda y redirígete a la página de ""Anunios Propios"".' },
       ],
       question3: '¿Puedo entrar en mi cuenta sin tener que iniciar sesión de nuevo en caso de no haber cerrado sesión?',
       answer3: [

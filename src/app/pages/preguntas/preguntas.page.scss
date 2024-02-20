@@ -1,26 +1,33 @@
-/* faq.page.scss */
+ion-title {
+  font-family: 'BEBAS', sans-serif;
+  font-style: italic;
+  font-size: x-large;
+}
 
-ion-header {
-    ion-toolbar {
-      color: white;
-      font-family: 'BEBAS', sans-serif;
-      font-style: italic;
-      font-size: x-large;
+ion-content {
+  ion-list {
+    background-color: transparent;
+
+    ion-item-divider {
+      font-weight: bold;
+      margin: 10px;
+      background-color: transparent;
+    }
+
+    ion-item {
+      padding-left: 16px;
+      padding-right: 16px;
+      margin: 10px;
+      background-color: transparent;
     }
   }
-  
-  ion-content {
-    ion-list {
-      ion-item-divider {
-        font-weight: bold;
-        margin: 10px;
-      }
+}
 
-      ion-item {
-        padding-left: 16px;
-        padding-right: 16px;
-        margin: 10px;
-      }
-    }
-  }
-  
+ion-label {
+  background-color: transparent;
+  border-radius: 5px;
+}
+
+.content {
+  --background: url('../../../assets/imgs/1000_F_719828782_Z3Kk47QUxeCUpZTdMBHnWpu7LBfS7YmA-DwzpMUGWlm-transformed.jpeg') no-repeat center center / cover;
+}

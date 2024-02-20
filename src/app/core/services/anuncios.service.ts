@@ -128,8 +128,7 @@ export class AnunciosService implements CrudAnuncios {
       imgs: anuncio.imgs
     };
     const apiUrl = `anuncios/${anuncioId}`;
-    return this.dataService.put<Anuncio>(apiUrl, _anun).pipe(
-      tap(_ => {
+    return this.dataService.put<Anuncio>(apiUrl, _anun).pipe(tap(_ => {
         this.getAllUserAnuncios(anuncio.userId).subscribe();
       }),
       catchError(error => {
@@ -148,7 +147,6 @@ export class AnunciosService implements CrudAnuncios {
     return this.dataService.delete<void>(apiUrl).pipe(
       tap(_ => {
         console.log('Anuncio eliminado con éxito.');
-        // Aquí puedes realizar cualquier acción adicional después de eliminar el anuncio
       }),
       catchError(error => {
         console.error('Error al eliminar el anuncio:', error);

@@ -12,12 +12,12 @@ import { CustomTranslateService } from 'src/app/core/services/custom-translate.s
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent  implements OnInit {
+export class HeaderComponent implements OnInit {
 
   private _user = new BehaviorSubject<User | null>(null);
   public user$ = this._user.asObservable();
 
-  @Input() user:User | null=null;
+  @Input() user: User | null = null;
   @Input() languages: string[] = ['es', 'en'];
   @Input() languageSelected: string = 'es';
   @Output() onSignout: EventEmitter<void> = new EventEmitter<void>()
@@ -28,7 +28,7 @@ export class HeaderComponent  implements OnInit {
     private _router: Router,
     private _auth: AuthService,
     private _lang: TranslateService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this._auth.isLogged$.subscribe((logged) => {
