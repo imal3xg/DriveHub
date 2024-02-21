@@ -18,7 +18,7 @@
         "email":"Email",
         "name":"Name",
         "surname":"Surname",
-        "nickname":"Nickname",
+        "username":"Username",
         "pwd":"Password",
         "confirm":"Confirm password",
         "login":"I want to Log In",

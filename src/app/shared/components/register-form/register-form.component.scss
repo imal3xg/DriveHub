@@ -1,0 +1,25 @@
+ion-item {
+    margin: 10px 0px;
+    border-radius: 10px;
+    height: fit-content;
+    --background: black !important;
+
+    ion-input {
+        font-size: large;
+    }
+}
+
+.ion-text-sub {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    --font-size: x-large;
+    --font-weight: bolder;
+    --color: red;
+}
+
+.custom-button {
+    font-size: large;
+    --background: red;
+}

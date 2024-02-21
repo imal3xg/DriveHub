@@ -18,7 +18,7 @@
         "email":"Email",
         "name":"Nombre",
         "surname":"Apellidos",
-        "nickname":"Apodo",
+        "username":"Nombre de Usuario",
         "pwd":"Contraseña",
         "confirm":"Confirmar contraseña",
         "login":"Quiero iniciar sesión",

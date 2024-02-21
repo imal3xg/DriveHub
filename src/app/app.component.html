@@ -3,18 +3,28 @@
     <ion-header>
       <ion-toolbar color="dark">
         <ion-buttons slot="start">
-          <ion-button (click)="menu.close()"><ion-icon slot="icon-only" color="danger" name="close-outline"></ion-icon></ion-button>
+          <ion-button (click)="menu.close()"><ion-icon slot="icon-only" name="close-outline"></ion-icon></ion-button>
         </ion-buttons>
         <img height="100px" alt="logo of drivehub" src="../assets/imgs/drivehublogo (1).png" />
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding" color="dark">
       <ion-list>
-        <ion-item (click)="close(menu)" [routerLink]="['/home']" button detail="false"><ion-icon slot="start" color="danger" name="home-outline"></ion-icon>{{ 'menu.home' | translate }}</ion-item>
-        <ion-item (click)="close(menu)" [routerLink]="['/perfil']" button detail="false"><ion-icon slot="start" color="danger" name="car-sport-outline"></ion-icon>{{ 'menu.profile' | translate }}</ion-item>
-        <ion-item (click)="close(menu)" [routerLink]="['/preguntas']" button detail="false"><ion-icon slot="start" color="danger" name="help-outline"></ion-icon>{{ 'menu.preguntas' | translate }}</ion-item>
-        <ion-item (click)="close(menu)" [routerLink]="['/about']" button detail="false"><ion-icon slot="start" color="danger" name="information-circle-outline"></ion-icon>{{ 'menu.about' | translate }}</ion-item>
-        <ion-item (click)="onSignOut(menu)" button detail="false"><ion-icon slot="start" color="danger" name="log-out-outline"></ion-icon>{{'menu.signout' | translate }}</ion-item>
+        <ion-item [routerLink]="['/home']" (click)="close(menu)">
+          <ion-icon slot="start" name="home-outline"></ion-icon>{{ 'menu.home' | translate }}
+        </ion-item>
+        <ion-item [routerLink]="['/perfil']" (click)="close(menu)">
+          <ion-icon slot="start" name="car-sport-outline"></ion-icon>{{ 'menu.profile' | translate }}
+        </ion-item>
+        <ion-item [routerLink]="['/preguntas']" (click)="close(menu)">
+          <ion-icon slot="start" name="help-outline"></ion-icon>{{ 'menu.preguntas' | translate }}
+        </ion-item>
+        <ion-item [routerLink]="['/about']" (click)="close(menu)">
+          <ion-icon slot="start" name="information-circle-outline"></ion-icon>{{ 'menu.about' | translate }}
+        </ion-item>
+        <ion-item (click)="onSignOut(menu)">
+          <ion-icon slot="start" name="log-out-outline"></ion-icon>{{'menu.signout' | translate }}
+        </ion-item>
       </ion-list>
     </ion-content>
   </ion-menu>

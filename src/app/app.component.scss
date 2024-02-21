@@ -1,9 +1,13 @@
 ion-router-outlet {
-    margin-top: 60px;
+    margin-top: 55px;
 }
 
 ion-menu {
     --width: 400px;
+}
+
+ion-icon {
+    color: red !important;
 }
 
 ion-radio-group {
@@ -20,4 +24,19 @@ ion-item {
     font-family: 'BEBAS', sans-serif;
     font-style: italic;
     font-size: x-large;
+    --background: black !important;
+}
+
+.neon-highlight {
+    animation: neon-animation 1s infinite alternate;
+}
+
+@keyframes neon-animation {
+    from {
+        text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000, 0 0 20px #ff0000, 0 0 35px #ff0000, 0 0 40px #ff0000, 0 0 50px #ff0000;
+    }
+
+    to {
+        text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 70px #ff0000, 0 0 80px #ff0000, 0 0 100px #ff0000;
+    }
 }

@@ -5,22 +5,26 @@ ion-card {
     height: auto;
     border-radius: 20px;
     margin: 20px;
+    background-color: black;
 }
 
 .neon-border {
-    position: relative;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #fff,
+        0 0 20px #fff,
+        0 0 40px #fff,
+        0 0 80px #fff;
+    transition: all 0.5s ease-in-out;
 }
 
-.neon-border::before,
-.neon-border::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 2px solid rgb(255, 0, 0); /* Color del neón (puedes ajustar esto) */
-    border-radius: 15px; /* Ajusta el radio del borde según tus preferencias */
-    opacity: 1; /* Establece la opacidad a 1 para que esté siempre presente */
+.neon-border:hover {
+    box-shadow: 0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px #fff,
+        0 0 40px #fff;
 }
+
 
 .contenedor {
     display: flex;
@@ -28,11 +32,13 @@ ion-card {
     align-items: center;
 }
 
-.titulo, .price {
+.titulo,
+.price {
     margin: 0;
     margin-top: 20px;
     font-family: 'BEBAS', sans-serif;
     font-size: xx-large;
+    color: white;
 }
 
 .imagen {
@@ -43,8 +49,10 @@ ion-card {
 
 ion-img {
     display: flex;
-    justify-content: center!;
-    width: 100%; /* Establece el ancho al 100% */
-    height: 320px; /* Establece la altura al 100% */
+    justify-content: center !;
+    width: 100%;
+    /* Establece el ancho al 100% */
+    height: 320px;
+    /* Establece la altura al 100% */
     object-fit: cover;
 }

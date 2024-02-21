@@ -1,14 +1,15 @@
+.toolbar-cont {
+  --background: rgb(255, 0, 0) !important;
+}
+
 ion-title {
   font-family: 'BEBAS', sans-serif;
   font-style: italic;
   font-size: x-large;
 }
 
-.filter {
-  position: relative;
-}
-
 .anun-panel {
+  margin: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;

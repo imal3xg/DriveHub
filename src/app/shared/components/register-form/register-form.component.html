@@ -29,7 +29,7 @@
     <ion-icon *ngIf="hasTouched('confirm') && hasError('confirm')" color="danger" slot="end" name="close-circle-outline"></ion-icon>
     <ion-icon *ngIf="hasTouched('confirm') && !hasError('confirm')" color="success" slot="end" name="checkmark-circle-outline"></ion-icon>
   </ion-item>
-  <div class="ion-text-end">
-    <ion-button type="submit" style="text-transform: none;" [disabled]="!form.valid">{{'register.submit' | translate }}</ion-button>
+  <div class="ion-text-sub">
+    <ion-button class="custom-button" fill="solid" type="submit" style="text-transform: none;" [disabled]="!form.valid">{{'register.submit' | translate }}</ion-button>
   </div>
 </form> 

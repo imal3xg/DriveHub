@@ -1,4 +1,4 @@
-ion-item{
+ion-item {
     margin: 5px;
 }
 
@@ -9,4 +9,17 @@ ion-item{
 
 .info {
     display: flex;
+}
+
+.toolbar-cont {
+    --background: rgb(0, 0, 0) !important;
+    color: rgb(255, 255, 255);
+}
+
+.ion-padding {
+    --background: black;
+}
+
+.custom-footer {
+    background-color: black;
 }

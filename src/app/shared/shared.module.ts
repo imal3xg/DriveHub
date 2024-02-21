@@ -17,6 +17,7 @@ import { ImgSelectableComponent } from './components/img-selectable/img-selectab
 import { TransformDatePipe } from './pipes/transform-date.pipe';
 import { AboutDetailComponent } from './components/about-detail/about-detail.component';
 import { AnuncioFormComponent } from './components/anuncio-form/anuncio-form.component';
+import { RedBorderDirective } from './directives/red-border.directive';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { AnuncioFormComponent } from './components/anuncio-form/anuncio-form.com
     HeaderComponent,
     AboutDetailComponent,
     TransformDatePipe,
+    RedBorderDirective,
     ],
   imports: [
     CommonModule,

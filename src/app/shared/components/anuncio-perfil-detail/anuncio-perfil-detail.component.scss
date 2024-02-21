@@ -1,19 +1,26 @@
+.toolbar-cont {
+    --background: black;
+}
+
+ion-content {
+    --background: black;
+}
+
 .contenedor {
-    justify-content:center;
+    justify-content: center;
     align-items: center;
     font-family: 'BEBAS', sans-serif;
-    margin: 30px;
+    margin: 40px;
+    height: auto;
 }
 
 .info {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: -10px;
-    margin-bottom: -10px;
+    margin-top: -20px;
 }
 
 ion-img {
     width: auto;
-    margin-bottom: 20px;
 }
