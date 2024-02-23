@@ -9,8 +9,8 @@
     </ion-buttons>
     <ion-title>D R I V E H U B</ion-title>
     <ion-button id="user-trigger" color="dark" shape="round" fill="outline" slot="end" class="user-info">
-      <ion-icon slot="start" color="danger" name="person-outline" size=""></ion-icon>
-      <ion-label *ngIf="user" color="danger">
+      <ion-icon slot="start" color="red" name="person-outline" size=""></ion-icon>
+      <ion-label class="nombre" *ngIf="user">
         <h2>{{user.username}}</h2>
       </ion-label>
     </ion-button>
@@ -24,9 +24,9 @@
     <ng-template>
       <ion-content>
         <ion-list>
-          <ion-item fill="none" [disabled]="language==languageSelected" *ngFor="let language of languages"
-            [button]="true" (click)="setLanguage(language)"
-            [detail]="false">{{language | uppercase}} - {{'header.languages.'+language | translate}}
+          <ion-item fill="clear" [disabled]="language==languageSelected" *ngFor="let language of languages"
+            [button]="true" (click)="setLanguage(language)" [detail]="false">
+            {{language | uppercase}} - {{'header.languages.'+ language | translate}}
           </ion-item>
         </ion-list>
       </ion-content>
@@ -36,12 +36,12 @@
     <ng-template>
       <ion-content>
         <ion-list>
-          <ion-item [button]="true" (click)="onProfile.emit()" [detail]="false">
-            <ion-icon slot="start" name="person-outline"></ion-icon>
+          <ion-item [button]="true" (click)="onProfile.emit()">
+            <ion-icon slot="start" name="person-outline" color="white"></ion-icon>
             {{'header.user.profile' | translate}}
           </ion-item>
-          <ion-item [button]="true" (click)="onSignout.emit()" [detail]="false">
-            <ion-icon slot="start" name="exit-outline"></ion-icon>
+          <ion-item class="boton" [button]="true" (click)="onSignout.emit()">
+            <ion-icon slot="start" name="exit-outline" color="red"></ion-icon>
             {{'header.user.signout' | translate}}
           </ion-item>
         </ion-list>
